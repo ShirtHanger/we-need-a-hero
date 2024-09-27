@@ -9,11 +9,11 @@ In addition to that, I plan on adding an updating list of previous pulls at the 
 
 Ideal desktop design
 
-<img src="We-Need-A-Hero!-draft-desktop.png">
+<img src="./notes-and-wireframe/We-Need-A-Hero!-draft-desktop.png">
 
 Ideal mobile design
 
-<img src="We-Need-A-Hero!-draft-mobile.png">
+<img src="./notes-and-wireframe/We-Need-A-Hero!-draft-mobile.png">
 
 Stretch goals:
 * Background changes based on character alignment, publisher,
