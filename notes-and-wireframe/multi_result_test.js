@@ -1,3 +1,8 @@
+/* Problem: Search results return the first alphabetica result*/
+/* NOBODY knows who cyborg superman is! */
+/* I asked ChatGPT for help on this */
+/* https://chatgpt.com/share/66f708e6-6d38-8012-b08b-71d3c9e32e3b */
+
 const supermen = {
   "response": "success",
   "results-for": "superman",
@@ -112,6 +117,25 @@ const supermen = {
 
 /* Figuring out how to ONLY show result of user input, not alphabetical stuff */
 
-let search = 'superman'
+let userInput = 'superman'
 
-console.log(supermen.results[search].name)
+for (superman of supermen.results) {
+  if (superman.name.toLowerCase() === userInput.toLowerCase()) {
+    console.log(superman.name);
+    break
+  }
+}
+
+function validateSearchResult(userInput, response) {
+  /* Makes sure first result matches what user typed in if multiple heroes get pulled */
+  /* ChatGPT suggested .toLowerCase() */
+  console.log('==========================')
+  for (result of response.results) {
+      if (result.name.toLowerCase() === userInput.toLowerCase()) {
+        return result.name
+        break
+      }
+    }
+}
+
+console.log(validateSearchResult(userInput, supermen))

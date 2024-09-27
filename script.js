@@ -52,6 +52,7 @@ buttonOne.addEventListener('click', async () => {
     let heroName = userInput.value
     let responseSearch = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/search/${heroName}`)
 
+
     let heroID = responseSearch.data.results[0].id
     let responseID = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/${heroID}`)
 
@@ -112,4 +113,15 @@ async function getHeroSearch(userInput, publicKey) {
     let heroName = userInput.value
     let response = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/search/${heroName}`)
     return response
+}
+
+function validateSearchResult(userInput, response) {
+    /* Makes sure first result matches what user typed in if multiple heroes get pulled */
+    // ChatGPT suggested .toLowerCase()
+    for (result of response.data.results) {
+        if (result.name.toLowerCase() === userInput.toLowerCase()) {
+          return result.name
+          break
+        }
+      }
 }
