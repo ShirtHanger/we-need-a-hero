@@ -114,17 +114,4 @@ const supermen = {
 
 let search = 'superman'
 
-for (superman of supermen.results) {
-  if (superman.name === search) {
-    console.log(superman.name)
-  }
-}
-
-/* I need to use complex for loop for this one! */
-
-for (let index = 0; index < response.data.results.length; index += 1) {
-  if (response.data.results[index].name === heroName) {
-      console.log(`Correct answer! ${response.data.results[i].name}`)
-  }
-  
-}
+console.log(supermen.results[search].name)
