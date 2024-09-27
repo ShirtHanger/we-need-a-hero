@@ -10,7 +10,13 @@ body {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    padding: 2rem;
+    padding: 0rem;
+    margin: 1rem;
+}
+
+img {
+    max-width: fit-content;
+    max-height: fit-content;
 }
 
 .hero-data {
@@ -23,7 +29,7 @@ body {
     font-size: 1rem;
 }
 
-.test-buttons {
+.right-side {
     margin: auto;
     flex-direction: column;
 }
@@ -50,10 +56,11 @@ body {
         font-size: 2rem;
     }
 
-    .test-buttons {
+    .right-side {
         justify-content: center;
         flex-direction: row;
     }
+
 
 
 }

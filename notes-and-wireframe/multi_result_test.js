@@ -1,171 +1,130 @@
-const theSpiderMen = {
-    "response": "success",
-    "results-for": "spider-man",
-    "results": [
-      {
-        "id": "620",
-        "name": "Spider-Man",
-        "powerstats": {
-          "intelligence": "90",
-          "strength": "55",
-          "speed": "67",
-          "durability": "75",
-          "power": "74",
-          "combat": "85"
-        },
-        "biography": {
-          "full-name": "Peter Parker",
-          "alter-egos": "No alter egos found.",
-          "aliases": [
-            "Spiderman",
-            "Bag-Man",
-            "Black Marvel",
-            "Captain Universe",
-            "Dusk",
-            "Green Hood",
-            "Hornet",
-            "Mad Dog 336",
-            "Peter Palmer",
-            "Prodigy",
-            "Ricochet",
-            "Scarlet Spider",
-            "Spider-Boy",
-            "Spider-Hulk",
-            "Spider-Morphosis"
-          ],
-          "place-of-birth": "New York, New York",
-          "first-appearance": "Amazing Fantasy #15",
-          "publisher": "Marvel Comics",
-          "alignment": "good"
-        },
-        "appearance": {
-          "gender": "Male",
-          "race": "Human",
-          "height": [
-            "5'10",
-            "178 cm"
-          ],
-          "weight": [
-            "165 lb",
-            "74 kg"
-          ],
-          "eye-color": "Hazel",
-          "hair-color": "Brown"
-        },
-        "work": {
-          "occupation": "Freelance photographer, teacher",
-          "base": "New York, New York"
-        },
-        "connections": {
-          "group-affiliation": "Member of the Avengers, formerly member of Outlaws, alternate Fantastic Four",
-          "relatives": "Richard Parker (father, deceased), Mary Parker(mother, deceased), Benjamin Parker (uncle, deceased), May Parker (aunt), Mary Jane Watson-Parker (wife), May Parker (daughter, allegedly deceased)"
-        },
-        "image": {
-          "url": "https://www.superherodb.com/pictures2/portraits/10/100/133.jpg"
-        }
+const supermen = {
+  "response": "success",
+  "results-for": "superman",
+  "results": [
+    {
+      "id": "195",
+      "name": "Cyborg Superman",
+      "powerstats": {
+        "intelligence": "75",
+        "strength": "93",
+        "speed": "92",
+        "durability": "100",
+        "power": "100",
+        "combat": "80"
       },
-      {
-        "id": "621",
-        "name": "Spider-Man",
-        "powerstats": {
-          "intelligence": "null",
-          "strength": "57",
-          "speed": "null",
-          "durability": "null",
-          "power": "null",
-          "combat": "null"
-        },
-        "biography": {
-          "full-name": "Miguel O'Hara",
-          "alter-egos": "No alter egos found.",
-          "aliases": [
-            "Spider-Man 2099",
-            "Spiderman"
-          ],
-          "place-of-birth": "-",
-          "first-appearance": "Amazing Spider-Man #365 (August, 1992)",
-          "publisher": "Marvel Comics",
-          "alignment": "good"
-        },
-        "appearance": {
-          "gender": "-",
-          "race": "Human",
-          "height": [
-            "5'10",
-            "178 cm"
-          ],
-          "weight": [
-            "170 lb",
-            "77 kg"
-          ],
-          "eye-color": "Red",
-          "hair-color": "Brown"
-        },
-        "work": {
-          "occupation": "CEO of Alchemax Corporation, Executive Assistant",
-          "base": "-"
-        },
-        "connections": {
-          "group-affiliation": "-",
-          "relatives": "-"
-        },
-        "image": {
-          "url": "https://www.superherodb.com/pictures2/portraits/10/100/479.jpg"
-        }
+      "biography": {
+        "full-name": "Henry Henshaw",
+        "alter-egos": "No alter egos found.",
+        "aliases": [
+          "Grandmaster of the Manhunters",
+          "Herald of the Anti-Monitor",
+          "Alpha-Prime of the Alpha Lanterns"
+        ],
+        "place-of-birth": "-",
+        "first-appearance": "Adventures of Superman #466 (May, 1990)",
+        "publisher": "DC Comics",
+        "alignment": "bad"
       },
-      {
-        "id": "622",
-        "name": "Spider-Man",
-        "powerstats": {
-          "intelligence": "null",
-          "strength": "58",
-          "speed": "null",
-          "durability": "null",
-          "power": "null",
-          "combat": "null"
-        },
-        "biography": {
-          "full-name": "Miles Morales",
-          "alter-egos": "No alter egos found.",
-          "aliases": [
-            "Spiderman"
-          ],
-          "place-of-birth": "-",
-          "first-appearance": "Ultimate Comics Fallout #4 (October, 2011)",
-          "publisher": "Marvel Comics",
-          "alignment": "good"
-        },
-        "appearance": {
-          "gender": "Male",
-          "race": "Human",
-          "height": [
-            "5'2",
-            "157 cm"
-          ],
-          "weight": [
-            "125 lb",
-            "56 kg"
-          ],
-          "eye-color": "Brown",
-          "hair-color": "Black"
-        },
-        "work": {
-          "occupation": "Student, adventurer, vigilante",
-          "base": "-"
-        },
-        "connections": {
-          "group-affiliation": "-",
-          "relatives": "-"
-        },
-        "image": {
-          "url": "https://www.superherodb.com/pictures2/portraits/10/100/10647.jpg"
-        }
+      "appearance": {
+        "gender": "Male",
+        "race": "Cyborg",
+        "height": [
+          "-",
+          "0 cm"
+        ],
+        "weight": [
+          "- lb",
+          "0 kg"
+        ],
+        "eye-color": "Blue",
+        "hair-color": "Black"
+      },
+      "work": {
+        "occupation": "-",
+        "base": "Warworld, Qward, Antimatter Universe, formerly Biot, Sector 3601"
+      },
+      "connections": {
+        "group-affiliation": "Alpha Lantern Corps, Manhunters, Warworld, formerly Apokolips and Sinestro Corps",
+        "relatives": "Terri Henshaw (wife, deceased)"
+      },
+      "image": {
+        "url": "https://www.superherodb.com/pictures2/portraits/10/100/667.jpg"
       }
-    ]
+    },
+    {
+      "id": "644",
+      "name": "Superman",
+      "powerstats": {
+        "intelligence": "94",
+        "strength": "100",
+        "speed": "100",
+        "durability": "100",
+        "power": "100",
+        "combat": "85"
+      },
+      "biography": {
+        "full-name": "Clark Kent",
+        "alter-egos": "Superman Prime One-Million",
+        "aliases": [
+          "Clark Joseph Kent",
+          "The Man of Steel",
+          "the Man of Tomorrow",
+          "the Last Son of Krypton",
+          "Big Blue",
+          "the Metropolis Marvel",
+          "the Action Ace"
+        ],
+        "place-of-birth": "Krypton",
+        "first-appearance": "ACTION COMICS #1",
+        "publisher": "Superman Prime One-Million",
+        "alignment": "good"
+      },
+      "appearance": {
+        "gender": "Male",
+        "race": "Kryptonian",
+        "height": [
+          "6'3",
+          "191 cm"
+        ],
+        "weight": [
+          "225 lb",
+          "101 kg"
+        ],
+        "eye-color": "Blue",
+        "hair-color": "Black"
+      },
+      "work": {
+        "occupation": "Reporter for the Daily Planet and novelist",
+        "base": "Metropolis"
+      },
+      "connections": {
+        "group-affiliation": "Justice League of America, The Legion of Super-Heroes (pre-Crisis as Superboy); Justice Society of America (pre-Crisis Earth-2 version); All-Star Squadron (pre-Crisis Earth-2 version)",
+        "relatives": "Lois Lane (wife), Jor-El (father, deceased), Lara (mother, deceased), Jonathan Kent (adoptive father), Martha Kent (adoptive mother), Seyg-El (paternal grandfather, deceased), Zor-El (uncle, deceased), Alura (aunt, deceased), Supergirl (Kara Zor-El, cousin), Superboy (Kon-El/Conner Kent, partial clone)"
+      },
+      "image": {
+        "url": "https://www.superherodb.com/pictures2/portraits/10/100/791.jpg"
+      }
+    }
+  ]
+}
+
+
+/* Figuring out how to ONLY show result of user input, not alphabetical stuff */
+
+let search = 'superman'
+
+for (superman of supermen.results) {
+  if (superman.name === search) {
+    console.log(superman.name)
   }
+}
 
-// console.log(spiderMen)
+/* I need to use complex for loop for this one! */
 
-for (spider of theSpiderMen.results) {
-    console.log(spider.biography['full-name'])
+for (let index = 0; index < response.data.results.length; index += 1) {
+  if (response.data.results[index].name === heroName) {
+      console.log(`Correct answer! ${response.data.results[i].name}`)
+  }
+  
 }
