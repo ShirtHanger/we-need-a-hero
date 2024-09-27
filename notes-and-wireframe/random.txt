@@ -1,0 +1,61 @@
+https://superheroapi.com/api/749a30707cb8e9fdcef7e93c31353b2b
+
+Search URL By name
+
+https://www.superheroapi.com/api.php/749a30707cb8e9fdcef7e93c31353b2b/search/${heroName}
+
+OR By ID
+
+https://www.superheroapi.com/api.php/749a30707cb8e9fdcef7e93c31353b2b/${heroID}
+
+ID returns single object. name returns array of objects
+
+Problems with ID Search
+
+    Not user friendly
+
+    (Bright side: Possible "Surprise me!" button! works better with ID search!)
+
+Problems with name search
+
+    Exact spelling or nothing. Don't expect to fix this tbh
+
+    Returns an array of Hero objects.
+        Multiple results means multiple heroes in array.
+        Can just return the first hero that fits requirement. Fix this later.
+
+        Possible solutions
+            multiple display
+            If the array's length is more than 1 (Multiple results)
+                For loop to pull civilian name of each hero
+                Ask "Which one?"
+                    When they select, take the civilian name into a variable
+                    Check if the name is equal to the drill location for each array item
+                    Select that hero
+
+STATS I WANT (May trim later)
+
+Name
+powerstats
+    {Nested Object}
+Bio
+    full name
+    birthplace
+    publisher (Not just Marvel or DC, manga too!)
+    alignment (Good or evil) (Possible background change on evil?)
+Appearance (Imperial units)
+    gender
+    race
+    height[0]
+    weight[0]
+Work
+    Occupation
+    Home Base
+image
+    url
+
+Other stuff:
+
+1. If user inputs "Spider Man" instead of "Spider-Man", do not execute, alert to tell them they forgot the hyphen
+2. Display logo of publishing company on side somewhere
+3. For mobile design, EVERYTHING will be a column. Figure out how to hide certain elements or just don't include them period.
