@@ -80,6 +80,7 @@ buttonOne.addEventListener('click', async () => {
     combatStat.textContent = responseSearch.data.results[0].powerstats.combat
 
     /* Bio info */ console.log('================================')
+    /* Bio info */ console.log('================================')
 
     birthplaceStat.textContent = responseSearch.data.results[0].biography['place-of-birth']
     nameDisplayCivilian.textContent = responseSearch.data.results[0].biography['full-name']
