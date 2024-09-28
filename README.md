@@ -7,19 +7,21 @@ They will be displayed on a trading card-style format, showing off an image, the
 
 In addition to that, I plan on adding an updating list of previous pulls at the bottom of the page, clicking them will bring up the same character again
 
-Ideal desktop design
+## Ideal desktop design
 
 <img src="./notes-and-wireframe/We-Need-A-Hero!-draft-desktop.png">
 
-Ideal mobile design
+## Ideal mobile design
 
 <img src="./notes-and-wireframe/We-Need-A-Hero!-draft-mobile.png">
 
-Stretch goals:
+### Stretch goals:
+
 * Background changes based on character alignment, publisher,
 * "Surprise me!" button, using a random number generator function and API ID search
 * Button to toggle stats at bottom of card
 
-Credits
+### Credits
+
 * Superhero API - https://superheroapi.com/api/
 * Placeholder art - Dan Hipp

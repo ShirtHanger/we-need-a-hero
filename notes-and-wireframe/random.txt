@@ -59,3 +59,15 @@ Other stuff:
 1. If user inputs "Spider Man" instead of "Spider-Man", do not execute, alert to tell them they forgot the hyphen
 2. Display logo of publishing company on side somewhere
 3. For mobile design, EVERYTHING will be a column. Figure out how to hide certain elements or just don't include them period.
+
+============================
+
+Publishers (Exact case, string):
+
+Marvel Comics
+
+DC Comics
+
+Shueisha
+
+731 total heroes in API list

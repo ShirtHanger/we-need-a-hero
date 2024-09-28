@@ -119,12 +119,12 @@ const supermen = {
 
 let userInput = 'superman'
 
-for (superman of supermen.results) {
-  if (superman.name.toLowerCase() === userInput.toLowerCase()) {
-    console.log(superman.name);
-    break
-  }
-}
+// for (superman of supermen.results) {
+//   if (superman.name.toLowerCase() === userInput.toLowerCase()) {
+//     console.log(superman.name);
+//     break
+//   }
+// }
 
 function validateSearchResult(userInput, response) {
   /* Makes sure first result matches what user typed in if multiple heroes get pulled */
@@ -138,4 +138,23 @@ function validateSearchResult(userInput, response) {
     }
 }
 
-console.log(validateSearchResult(userInput, supermen))
+// console.log(validateSearchResult(userInput, supermen))
+
+/* I don't feel comfortable with chatGPT's solution though */
+
+/* I decided to pass in a random number, random result for heroes with similar/same name */
+
+let randIndex
+
+function randNum(array) {
+  randIndex = Math.floor(Math.random() * array.length) // Copied this from my Pokemon Album Prework, edited for this
+  return randIndex
+}
+
+randNum(supermen.results)
+
+randIndex = randNum(supermen.results)
+
+console.log(randIndex)
+
+console.log(supermen.results[randIndex].name)
