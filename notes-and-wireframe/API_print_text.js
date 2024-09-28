@@ -61,4 +61,4 @@ const ogSpiderMan = {
     "url": "https://www.superherodb.com/pictures2/portraits/10/100/133.jpg"
   }
 }
-console.log(ogSpiderMan)
+console.log(ogSpiderMan.powerstats)

@@ -64,10 +64,35 @@ Other stuff:
 
 Publishers (Exact case, string):
 
+ADDED:
 Marvel Comics
-
 DC Comics
-
 Shueisha
+George Lucas
+Image Comics
+Dark Horse Comics
+
+ADD LATER:
+IDW Publishing (TEENAGE MUTANT NINJA TURTLES!)
+HarperCollins
 
 731 total heroes in API list
+    "Random hero" button must have a random number between 1 and 731
+
+=============================
+
+Sep 28th basic goals
+
+Turn the long line of setting text content into a function
+Turn the setting of background and company logo into a function
+This allows you to pass in argument of random hero ID and ID search link instead of manually doing it.
+
+Stats bar toggle: 
+    Set visibility or display of power stats, bio stats, and occupation stats class(es) to visible, hidden/none, and hidden/none respectively
+    Iterate over list of each class with “For of” loop. Try queryselectorall first
+    If the attribute of visibility is hidden…
+    set it to visible, then break
+
+    If that’s too much, do similar to your set background. If else block. Manually set attributes for all 3
+    Or just reduce stats to 2, instead of 3
+    After that, turn into function
