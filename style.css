@@ -52,6 +52,7 @@ body {
 
 .hero-stat-header {
     flex-direction: column;
+    border: 4px solid gray;
 }
 
 ul {
