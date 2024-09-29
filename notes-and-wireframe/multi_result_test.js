@@ -1,6 +1,6 @@
 /* Problem: Search results return the first alphabetica result*/
 /* NOBODY knows who cyborg superman is! */
-/* I asked ChatGPT for help on this */
+/* I asked ChatGPT for help on this, but ultimately did not use it's code */
 /* https://chatgpt.com/share/66f708e6-6d38-8012-b08b-71d3c9e32e3b */
 
 const supermen = {
@@ -140,7 +140,7 @@ function validateSearchResult(userInput, response) {
 
 // console.log(validateSearchResult(userInput, supermen))
 
-/* I don't feel comfortable with chatGPT's solution though */
+/* I don't feel comfortable with chatGPT's solution though, so I have no used it. At all */
 
 /* I decided to pass in a random number, random result for heroes with similar/same name */
 
