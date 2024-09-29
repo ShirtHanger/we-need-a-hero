@@ -4,7 +4,7 @@ const publicKey = '749a30707cb8e9fdcef7e93c31353b2b'
 
 const searchButton = document.querySelector('#search-button')
 const randomHeroButton = document.querySelector('#random-hero-button')
-const toggleStatsButton = document.querySelector('#toggle-stats-button')
+const buttonTwo = document.querySelector('#toggle-stats-button')
 const buttonThree = document.querySelector('#btn3')
 const buttonFour = document.querySelector('#btn4')
 const userInput = document.querySelector('input')
@@ -37,16 +37,6 @@ const homeBaseStat = document.querySelector('#home-base-stat')
 const firstAppearanceStat = document.querySelector('#first-appearance-stat')
 const publisherStat = document.querySelector('#publisher-stat')
 const alignmentStat = document.querySelector('#alignment-stat')
-
-/* This might make the above obselete */
-
-const heroStatHeader = document.querySelector('.hero-stat-header')
-const heroStat1 = document.querySelector('#hero-stat-1')
-const heroStat2 = document.querySelector('#hero-stat-2')
-const heroStat3 = document.querySelector('#hero-stat-3')
-const heroStat4 = document.querySelector('#hero-stat-4')
-const heroStat5 = document.querySelector('#hero-stat-5')
-const heroStat6 = document.querySelector('#hero-stat-6')
 
 /* Special backgrounds */
 
@@ -106,7 +96,7 @@ searchButton.addEventListener('click', async () => { /* Pulls image and hero sta
     console.log(`User input: ${heroName}`)
     console.log(`ID: ${heroID}`)
 
-    setHeroStatsVer2(heroData, heroPic, heroID)
+    setHeroStats(heroData, heroPic, heroID)
 
     console.log(heroData.biography.publisher)
 
@@ -142,56 +132,9 @@ randomHeroButton.addEventListener('click', async (params) => {
 
 /* Hello there */
 
-toggleStatsButton.addEventListener('click', async () => {
-    let heroID = imageEl.alt
-    console.log (heroID)
-
-    let responseID = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/${heroID}`)
-
-    console.log(`Swapping stats of: ${responseID.data.name}`)
-
-    let heroData = responseID.data
-    console.log(heroData)
-
-    if (heroStatHeader.innerHTML === `<h3>BATTLE STATS</h3>`) {
-        // Set to physical stats
-        heroStatHeader.innerHTML = `<h3>PHYSICAL STATS</h3>`
-        
-        heroStat1.innerHTML = `<p><strong>HEIGHT</strong> - ${heroData.appearance.height[0]}</p>`
-        heroStat2.innerHTML = `<p><strong>WEIGHT</strong> - ${heroData.appearance.weight[0]}</p>`
-        heroStat3.innerHTML = `<p><strong>RACE</strong> - ${heroData.appearance.race}</p>`
-        heroStat4.innerHTML = `<p><strong>GENDER</strong> - ${heroData.appearance.gender}</p>`
-        heroStat5.innerHTML = `<p><strong>-</strong>-</p>`
-        heroStat6.innerHTML = `<p><strong>-</strong>-</p>`
-
-    } else if (heroStatHeader.innerHTML === `<h3>PHYSICAL STATS</h3>`) {
-        //Set to bio stats
-        heroStatHeader.innerHTML = `<h3>BIOGRAPHY STATS</h3>`
-        
-        heroStat1.innerHTML = `<p><strong>Civilian Name</strong> - ${heroData.biography['full-name']}</p>`
-        heroStat2.innerHTML = `<p><strong>Place of Birth</strong> - ${heroData.biography['place-of-birth']}</p>`
-        heroStat3.innerHTML = `<p><strong>Lives in</strong> - ${heroData.work.base}</p>`
-        heroStat4.innerHTML = `<p><strong>Occupation</strong> - ${heroData.work.occupation}</p>`
-        heroStat5.innerHTML = `<p><strong>-</strong>-</p>`
-        heroStat6.innerHTML = `<p><strong>-</strong>-</p>`
-
-    } else if (heroStatHeader.innerHTML === `<h3>BIOGRAPHY STATS</h3>`) {
-        // Set to battle stats
-        heroStatHeader.innerHTML = `<h3>BATTLE STATS</h3>`
-
-        heroStat1.innerHTML = `<p><strong>Intelligence</strong> - ${heroData.powerstats.intelligence}</p>`
-        heroStat2.innerHTML = `<p><strong>Strength</strong> - ${heroData.powerstats.strength}</p>`
-        heroStat3.innerHTML = `<p><strong>Speed</strong> - ${heroData.powerstats.speed}</p>`
-        heroStat4.innerHTML = `<p><strong>Durability</strong> - ${heroData.powerstats.durability}</p>`
-        heroStat5.innerHTML = `<p><strong>Super power score</strong> - ${heroData.powerstats.power}</p>`
-        heroStat6.innerHTML = `<p><strong>Combat Skills</strong> - ${heroData.powerstats.combat}</p>`
-    } else {
-        console.log('IDK')
-        alert('Something went wrong, please reload page')
-    }
 
 
-})
+
 
 
 
@@ -311,48 +254,4 @@ function setBackground(heroPublisher) {
     document.body.style.backgroundAttachment = 'fixed'
     document.body.style.backgroundSize = 'auto'
     document.body.style.backgroundPosition = 'center'
-}
-
-function setHeroStatsVer2(responseDrill, heroPic, heroID) {
-    /* Sets all text content in accordance to API pull */
-    nameDisplayHero.textContent = responseDrill.name
-    nameDisplayCivilian.textContent = responseDrill.biography['full-name']
-    
-    imageEl.setAttribute ('src', heroPic)
-    imageEl.setAttribute ('alt', heroID) // Storing ID will be useful for "Saving previous pulls" stretch goal
-
-    /* Finding desired stats */
-    
-
-    /* =============== Power stats =============== */
-
-    heroStatHeader.innerHTML = `<h3>BATTLE STATS</h3>`
-
-    heroStat1.innerHTML = `<p><strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>`
-    heroStat2.innerHTML = `<p><strong>Strength</strong> - ${responseDrill.powerstats.strength}</p>`
-    heroStat3.innerHTML = `<p><strong>Speed</strong> - ${responseDrill.powerstats.speed}</p>`
-    heroStat4.innerHTML = `<p><strong>Durability</strong> - ${responseDrill.powerstats.durability}</p>`
-    heroStat5.innerHTML = `<p><strong>Super power score</strong> - ${responseDrill.powerstats.power}</p>`
-    heroStat6.innerHTML = `<p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}</p>`
-
-    /*=============== Biography ===============*/ 
-
-    // birthplaceStat.textContent = `Place of Birth: ${responseDrill.biography['place-of-birth']}`
-    // nameDisplayCivilian.textContent = `${responseDrill.biography['full-name']}`
-
-    // occupationStat.textContent = `Occupation: ${responseDrill.work.occupation}`
-    // homeBaseStat.textContent = `Lives in:${responseDrill.work.base}`
-
-    /* =============== Physical Stats =============== */ 
-
-    // genderStat.textContent = `Gender: ${responseDrill.appearance.gender}`
-    // raceStat.textContent = `Race: ${responseDrill.appearance.race}`   
-    // heightStat.textContent = `Height: ${responseDrill.appearance.height[0]}` // Imperial units
-    // weightStat.textContent = `Weight: ${responseDrill.appearance.weight[0]}`
-
-
-    /* =============== Meta (Publisher and First appearance) =============== */ 
-
-    firstAppearanceStat.textContent = responseDrill.biography['first-appearance']
-    alignmentStat.textContent = responseDrill.biography.alignment
 }

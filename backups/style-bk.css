@@ -31,11 +31,8 @@ body {
 .api-pull {
     justify-content: center;
     font-size: 1rem;
-    border: 4px solid red;
+    border: 3px solid red;
     background-color: orange;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
 }
 
 #pic-display {
@@ -44,27 +41,22 @@ body {
     margin: 0rem;
     border: 3px solid green;
     background-color: navy;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
-
-img {
-    border: 3px solid orange;
 }
 
 .hero-stats {
-    border: 3px solid silver;
+    border: 3px solid purple;
     background-color: brown;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
 }
 
 .hero-stat-header {
-    border: 4px solid orange;
+    flex-direction: column;
+    border: 4px solid gray;
 }
 
-.hero-stat-names-and-values {
-    
+ul {
+    list-style: none;
 }
 
 .right-side {
