@@ -106,7 +106,9 @@ searchButton.addEventListener('click', async () => { /* Pulls image and hero sta
     console.log(`User input: ${heroName}`)
     console.log(`ID: ${heroID}`)
 
-    setHeroStatsVer2(heroData, heroPic, heroID)
+    /* Sets stats and data */
+
+    setHeroStats(heroData, heroPic, heroID)
 
     console.log(heroData.biography.publisher)
 
@@ -114,6 +116,7 @@ searchButton.addEventListener('click', async () => { /* Pulls image and hero sta
 })
 
 randomHeroButton.addEventListener('click', async (params) => {
+
     /* Will create a random ID between 1 and 731, then pull a random hero using ID search */
     randomNumber = randNum(732) // 732 because of technicality with math.floor or whatever
 
@@ -131,6 +134,8 @@ randomHeroButton.addEventListener('click', async (params) => {
     console.log(heroID)
     console.log(heroPic)
 
+    /* Sets stats and data */
+
     setHeroStats(heroData, heroPic, heroID)
 
     console.log(heroData.biography.publisher)
@@ -140,11 +145,13 @@ randomHeroButton.addEventListener('click', async (params) => {
 
 })
 
-/* Hello there */
-
 toggleStatsButton.addEventListener('click', async () => {
+
+    /* Pulls hero ID from alt to make things easier */
     let heroID = imageEl.alt
     console.log (heroID)
+
+    /* Collects API response again */
 
     let responseID = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/${heroID}`)
 
@@ -153,43 +160,9 @@ toggleStatsButton.addEventListener('click', async () => {
     let heroData = responseID.data
     console.log(heroData)
 
-    if (heroStatHeader.innerHTML === `<h3>BATTLE STATS</h3>`) {
-        // Set to physical stats
-        heroStatHeader.innerHTML = `<h3>PHYSICAL STATS</h3>`
-        
-        heroStat1.innerHTML = `<p><strong>HEIGHT</strong> - ${heroData.appearance.height[0]}</p>`
-        heroStat2.innerHTML = `<p><strong>WEIGHT</strong> - ${heroData.appearance.weight[0]}</p>`
-        heroStat3.innerHTML = `<p><strong>RACE</strong> - ${heroData.appearance.race}</p>`
-        heroStat4.innerHTML = `<p><strong>GENDER</strong> - ${heroData.appearance.gender}</p>`
-        heroStat5.innerHTML = `<p><strong>-</strong>-</p>`
-        heroStat6.innerHTML = `<p><strong>-</strong>-</p>`
+    /* Calls toggle stat function */
 
-    } else if (heroStatHeader.innerHTML === `<h3>PHYSICAL STATS</h3>`) {
-        //Set to bio stats
-        heroStatHeader.innerHTML = `<h3>BIOGRAPHY STATS</h3>`
-        
-        heroStat1.innerHTML = `<p><strong>Civilian Name</strong> - ${heroData.biography['full-name']}</p>`
-        heroStat2.innerHTML = `<p><strong>Place of Birth</strong> - ${heroData.biography['place-of-birth']}</p>`
-        heroStat3.innerHTML = `<p><strong>Lives in</strong> - ${heroData.work.base}</p>`
-        heroStat4.innerHTML = `<p><strong>Occupation</strong> - ${heroData.work.occupation}</p>`
-        heroStat5.innerHTML = `<p><strong>-</strong>-</p>`
-        heroStat6.innerHTML = `<p><strong>-</strong>-</p>`
-
-    } else if (heroStatHeader.innerHTML === `<h3>BIOGRAPHY STATS</h3>`) {
-        // Set to battle stats
-        heroStatHeader.innerHTML = `<h3>BATTLE STATS</h3>`
-
-        heroStat1.innerHTML = `<p><strong>Intelligence</strong> - ${heroData.powerstats.intelligence}</p>`
-        heroStat2.innerHTML = `<p><strong>Strength</strong> - ${heroData.powerstats.strength}</p>`
-        heroStat3.innerHTML = `<p><strong>Speed</strong> - ${heroData.powerstats.speed}</p>`
-        heroStat4.innerHTML = `<p><strong>Durability</strong> - ${heroData.powerstats.durability}</p>`
-        heroStat5.innerHTML = `<p><strong>Super power score</strong> - ${heroData.powerstats.power}</p>`
-        heroStat6.innerHTML = `<p><strong>Combat Skills</strong> - ${heroData.powerstats.combat}</p>`
-    } else {
-        console.log('IDK')
-        alert('Something went wrong, please reload page')
-    }
-
+    toggleDisplayedStats(heroData, heroStatHeader)
 
 })
 
@@ -207,54 +180,41 @@ toggleStatsButton.addEventListener('click', async () => {
 
 /* Functions here */
 
+function setHeroStats(responseDrill, heroPic, heroID) {
+    /* Sets all text content in accordance to API pull */
+
+    /* Top of the card gets their civilian name, left side gets their superhero name */
+    nameDisplayHero.textContent = responseDrill.name
+    nameDisplayCivilian.textContent = responseDrill.biography['full-name']
+    
+    imageEl.setAttribute ('src', heroPic)
+    imageEl.setAttribute ('alt', heroID) // Storing ID used for "Toggle stats" button function
+    // will be useful for "Saving previous pulls" stretch goal
+    
+
+    /* Sets Power rating stats. Other stats (Biography, physical, etc.) will be toggled via another function */
+
+    heroStatHeader.innerHTML = `<h3>BATTLE STATS</h3>`
+
+    heroStat1.innerHTML = `<p><strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>`
+    heroStat2.innerHTML = `<p><strong>Strength</strong> - ${responseDrill.powerstats.strength}</p>`
+    heroStat3.innerHTML = `<p><strong>Speed</strong> - ${responseDrill.powerstats.speed}</p>`
+    heroStat4.innerHTML = `<p><strong>Durability</strong> - ${responseDrill.powerstats.durability}</p>`
+    heroStat5.innerHTML = `<p><strong>Super power score</strong> - ${responseDrill.powerstats.power}</p>`
+    heroStat6.innerHTML = `<p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}</p>`
+
+    /* =============== Meta stuff, hero's alignment and first appearance =============== */
+
+    firstAppearanceStat.textContent = responseDrill.biography['first-appearance']
+    alignmentStat.textContent = responseDrill.biography.alignment
+}
+
 function randNum(maxNum) {
     /* Returns a random number between 0 and the length of given array */
     /* Used for when multiple heroes are returned for search result, will use this over ChatGPT's suggestion */
     randIndex = Math.floor(Math.random() * maxNum) // Copied this from my Pokemon Album Prework, edited for this
     return randIndex
   }
-
-function setHeroStats(responseDrill, heroPic, heroID) {
-    /* Sets all text content in accordance to API pull */
-    nameDisplayHero.textContent = responseDrill.name
-    nameDisplayCivilian.textContent = responseDrill.biography['full-name']
-    
-    imageEl.setAttribute ('src', heroPic)
-    imageEl.setAttribute ('alt', heroID) // Storing ID will be useful for "Saving previous pulls" stretch goal
-
-    /* Finding desired stats */
-    
-
-    /* =============== Power stats =============== */
-
-    intelligenceStat.textContent = `Intelligence: ${responseDrill.powerstats.intelligence}`
-    strengthStat.textContent = `Strength : ${responseDrill.powerstats.strength}`
-    speedStat.textContent = `Speed: ${responseDrill.powerstats.speed}`
-    durabilityStat.textContent = `Durability: ${responseDrill.powerstats.durability}`
-    powerStat.textContent = `Super power score: ${responseDrill.powerstats.power}`
-    combatStat.textContent = `Combat Skills: ${responseDrill.powerstats.combat}`
-
-    /*=============== Biography ===============*/ 
-
-    birthplaceStat.textContent = `Place of Birth: ${responseDrill.biography['place-of-birth']}`
-    nameDisplayCivilian.textContent = `${responseDrill.biography['full-name']}`
-
-    occupationStat.textContent = `Occupation: ${responseDrill.work.occupation}`
-    homeBaseStat.textContent = `Lives in:${responseDrill.work.base}`
-
-    /* =============== Physical Stats =============== */ 
-
-    genderStat.textContent = `Gender: ${responseDrill.appearance.gender}`
-    raceStat.textContent = `Race: ${responseDrill.appearance.race}`   
-    heightStat.textContent = `Height: ${responseDrill.appearance.height[0]}` // Imperial units
-    weightStat.textContent = `Weight: ${responseDrill.appearance.weight[0]}`
-
-
-    /* =============== Meta (Publisher and First appearance) =============== */ 
-
-    firstAppearanceStat.textContent = responseDrill.biography['first-appearance']
-    alignmentStat.textContent = responseDrill.biography.alignment
-}
 
 function setBackground(heroPublisher) {
 
@@ -313,46 +273,53 @@ function setBackground(heroPublisher) {
     document.body.style.backgroundPosition = 'center'
 }
 
-function setHeroStatsVer2(responseDrill, heroPic, heroID) {
-    /* Sets all text content in accordance to API pull */
-    nameDisplayHero.textContent = responseDrill.name
-    nameDisplayCivilian.textContent = responseDrill.biography['full-name']
-    
-    imageEl.setAttribute ('src', heroPic)
-    imageEl.setAttribute ('alt', heroID) // Storing ID will be useful for "Saving previous pulls" stretch goal
+function toggleDisplayedStats(responseDrill, heroStatHeader) {
 
-    /* Finding desired stats */
-    
-
-    /* =============== Power stats =============== */
-
-    heroStatHeader.innerHTML = `<h3>BATTLE STATS</h3>`
-
-    heroStat1.innerHTML = `<p><strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>`
-    heroStat2.innerHTML = `<p><strong>Strength</strong> - ${responseDrill.powerstats.strength}</p>`
-    heroStat3.innerHTML = `<p><strong>Speed</strong> - ${responseDrill.powerstats.speed}</p>`
-    heroStat4.innerHTML = `<p><strong>Durability</strong> - ${responseDrill.powerstats.durability}</p>`
-    heroStat5.innerHTML = `<p><strong>Super power score</strong> - ${responseDrill.powerstats.power}</p>`
-    heroStat6.innerHTML = `<p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}</p>`
-
-    /*=============== Biography ===============*/ 
-
-    // birthplaceStat.textContent = `Place of Birth: ${responseDrill.biography['place-of-birth']}`
-    // nameDisplayCivilian.textContent = `${responseDrill.biography['full-name']}`
-
-    // occupationStat.textContent = `Occupation: ${responseDrill.work.occupation}`
-    // homeBaseStat.textContent = `Lives in:${responseDrill.work.base}`
-
-    /* =============== Physical Stats =============== */ 
-
-    // genderStat.textContent = `Gender: ${responseDrill.appearance.gender}`
-    // raceStat.textContent = `Race: ${responseDrill.appearance.race}`   
-    // heightStat.textContent = `Height: ${responseDrill.appearance.height[0]}` // Imperial units
-    // weightStat.textContent = `Weight: ${responseDrill.appearance.weight[0]}`
+    /* Swaps which stats are displayed when "Toggle stats" button is clicked */
 
 
-    /* =============== Meta (Publisher and First appearance) =============== */ 
+    if (heroStatHeader.innerHTML === `<h3>BATTLE STATS</h3>`) {
 
-    firstAppearanceStat.textContent = responseDrill.biography['first-appearance']
-    alignmentStat.textContent = responseDrill.biography.alignment
+        // Set to physical stats
+
+        heroStatHeader.innerHTML = `<h3>PHYSICAL STATS</h3>`
+        
+        heroStat1.innerHTML = `<p><strong>HEIGHT</strong> - ${responseDrill.appearance.height[0]}</p>`
+        heroStat2.innerHTML = `<p><strong>WEIGHT</strong> - ${responseDrill.appearance.weight[0]}</p>`
+        heroStat3.innerHTML = `<p><strong>RACE</strong> - ${responseDrill.appearance.race}</p>`
+        heroStat4.innerHTML = `<p><strong>GENDER</strong> - ${responseDrill.appearance.gender}</p>`
+        heroStat5.innerHTML = `<p><strong>-</strong>-</p>`
+        heroStat6.innerHTML = `<p><strong>-</strong>-</p>`
+
+    } else if (heroStatHeader.innerHTML === `<h3>PHYSICAL STATS</h3>`) {
+
+        //Set to bio stats
+
+        heroStatHeader.innerHTML = `<h3>BIOGRAPHY STATS</h3>`
+        
+        heroStat1.innerHTML = `<p><strong>Civilian Name</strong> - ${responseDrill.biography['full-name']}</p>`
+        heroStat2.innerHTML = `<p><strong>Place of Birth</strong> - ${responseDrill.biography['place-of-birth']}</p>`
+        heroStat3.innerHTML = `<p><strong>Lives in</strong> - ${responseDrill.work.base}</p>`
+        heroStat4.innerHTML = `<p><strong>Occupation</strong> - ${responseDrill.work.occupation}</p>`
+        heroStat5.innerHTML = `<p><strong>-</strong>-</p>`
+        heroStat6.innerHTML = `<p><strong>-</strong>-</p>`
+
+    } else if (heroStatHeader.innerHTML === `<h3>BIOGRAPHY STATS</h3>`) {
+
+        // Set to battle stats
+        
+        heroStatHeader.innerHTML = `<h3>BATTLE STATS</h3>`
+
+        heroStat1.innerHTML = `<p><strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>`
+        heroStat2.innerHTML = `<p><strong>Strength</strong> - ${responseDrill.powerstats.strength}</p>`
+        heroStat3.innerHTML = `<p><strong>Speed</strong> - ${responseDrill.powerstats.speed}</p>`
+        heroStat4.innerHTML = `<p><strong>Durability</strong> - ${responseDrill.powerstats.durability}</p>`
+        heroStat5.innerHTML = `<p><strong>Super power score</strong> - ${responseDrill.powerstats.power}</p>`
+        heroStat6.innerHTML = `<p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}</p>`
+
+    } else {
+        
+        console.log('IDK')
+        alert('Something went wrong, please reload page')
+    }
 }

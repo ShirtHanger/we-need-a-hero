@@ -71,10 +71,11 @@ Shueisha
 George Lucas
 Image Comics
 Dark Horse Comics
-
-ADD LATER:
 IDW Publishing (TEENAGE MUTANT NINJA TURTLES!)
 HarperCollins
+
+ADD LATER:
+Microsoft (Halo)
 
 731 total heroes in API list
     "Random hero" button must have a random number between 1 and 731
@@ -96,6 +97,23 @@ Stats bar toggle:
     If that’s too much, do similar to your set background. If else block. Manually set attributes for all 3
     Or just reduce stats to 2, instead of 3
     After that, turn into function
+
+====================================
+
+Sep 29th 
+
+Hero stats toggle solution
+
+Just make one, singular header and text line. Make a function to toggle the 
+information on button click similarly to how you have backgrounds based on what the publisher was.
+
+Make it “If header title string equal to power stats, 
+swap to bio stats. Else if equal to bio stats, swap to hero stats. 
+Else if equal to bio stats, swap to power stats, else, console log “Error has occurred” and tell user to reload
+
+Also consider list style image
+
+Try using float left/right for styling too
 
 
 ============= Glitches ============
