@@ -96,3 +96,6 @@ Stats bar toggle:
     If that’s too much, do similar to your set background. If else block. Manually set attributes for all 3
     Or just reduce stats to 2, instead of 3
     After that, turn into function
+
+
+============= Glitches ============

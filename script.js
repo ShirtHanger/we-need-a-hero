@@ -11,9 +11,9 @@ const userInput = document.querySelector('input')
 
 /* Display elements */
 
-const nameDisplay = document.querySelector('#name-display')
+const nameDisplayHero = document.querySelector('#hero-name-display')
 const nameDisplayCivilian = document.querySelector('#civilian-name-display')
-const imageEl = document.querySelector('#picDisplay')
+const imageEl = document.querySelector('#pic-display')
 
 /* Character stats elements */
 
@@ -40,19 +40,28 @@ const alignmentStat = document.querySelector('#alignment-stat')
 
 /* Special backgrounds */
 
-const marvelLogo = './publisher-logos/marvel-logo.png'
+// const marvelLogo = './publisher-logos/marvel-logo.png'
+// const dcLogo = './publisher-logos/dc-logo.png'
+// const lucasFilmLogo = './publisher-logos/lucasfilm-logo.png'
+// const imageComicsLogo = './publisher-logos/image-comics-logo.png'
+// const darkHorseLogo = './publisher-logos/dark-horse-comics-logo.png'
+// const shueishaLogo = './publisher-logos/shueisha-logo.png'
+// const idwLogo = './publisher-logos/idw-publishing-logo.png'
+// const harperCollinsLogo = './publisher-logos/harpercollins-logo.jpg'
+
+const marvelLogo = './publisher-logos/Marvel-Logo.svg'
 const dcLogo = './publisher-logos/dc-logo.png'
-const lucasFilmLogo = './publisher-logos/lucasfilm-logo.png'
-const imageComicsLogo = './publisher-logos/image-comics-logo.png'
-const darkHorseLogo = './publisher-logos/dark-horse-comics-logo.png'
-const shueishaLogo = './publisher-logos/shueisha-logo.png'
-const idwLogo = './publisher-logos/idw-publishing-logo.png'
+const lucasFilmLogo = './publisher-logos/lucasfilm-logo.svg'
+const imageComicsLogo = './publisher-logos/image-comics-logo.svg'
+const darkHorseLogo = './publisher-logos/dark-horse-comics-logo.svg'
+const shueishaLogo = './publisher-logos/Shueisha-Logo.svg'
+const idwLogo = './publisher-logos/idw-publishing-logo.svg'
 const harperCollinsLogo = './publisher-logos/harpercollins-logo.jpg'
 
 const redBackground = './backgrounds/red-bg.jpg'
 const blueBackground = './backgrounds/blue-bg.jpg'
 const spaceBackground = './backgrounds/star-wars-bg.jpg'
-const sewerBackground = './backgrounds/tmnt-sewer-bg.jpg'
+const sewerBackground = './backgrounds/tmnt-sewer-bg-2.jpg'
 const mangaBackground = './backgrounds/manga-bg.jpg'
 const mixedBackground = './backgrounds/mixed-bg.jpg'
 console.log(marvelLogo, dcLogo, shueishaLogo)
@@ -150,7 +159,7 @@ function randNum(maxNum) {
 
 function setHeroStats(responseDrill, heroPic, heroID) {
     /* Sets all text content in accordance to API pull */
-    nameDisplay.textContent = responseDrill.name
+    nameDisplayHero.textContent = responseDrill.name
     nameDisplayCivilian.textContent = responseDrill.biography['full-name']
     
     imageEl.setAttribute ('src', heroPic)

@@ -5,7 +5,7 @@ body {
     background: url('./backgrounds/mixed-bg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: auto;
+    background-size: cover;
     background-position: center;
     color: white;
     font: bolder;
@@ -17,14 +17,11 @@ body {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    padding: 0rem;
-    margin: 1rem;
+    padding: 6rem; /* Padding of 6rem makes image center well for some reason on desktop, not for mobile */
+    margin: 0rem;
 }
 
-img {
-    max-width: fit-content;
-    max-height: fit-content;
-}
+
 
 .hero-data {
     font-size: 1rem;
@@ -34,6 +31,31 @@ img {
 .api-pull {
     justify-content: center;
     font-size: 1rem;
+    border: 3px solid red;
+    background-color: orange;
+}
+
+#pic-display {
+    object-fit: contain; /* https://www.w3schools.com/css/css3_object-fit.asp Knowledge get */
+    padding: 6rem; /* Padding of 6rem makes image center well for some reason pn desktop, not for mobile*/
+    margin: 0rem;
+    border: 3px solid green;
+    background-color: navy;
+}
+
+.hero-stats {
+    border: 3px solid purple;
+    background-color: brown;
+    display: flex;
+    flex-direction: row;
+}
+
+.hero-stat-header {
+    flex-direction: column;
+}
+
+ul {
+    list-style: none;
 }
 
 .right-side {
@@ -41,21 +63,33 @@ img {
     flex-direction: column;
 }
 
+#publisher-stat {
+    width: 50%;
+    height: 50%;
+}
+
 @media screen and (max-width: 800px) {
 
     body {
-        background-color: blueviolet;
+        background-color: blueviolet; /* Here for testing  */
     }
 
     .data-container {
         display: flex;
         justify-content: center;
         flex-direction: column-reverse;
+        padding: 0rem;
+    }
+
+    #pic-display {
+        padding: 0rem;
+        justify-content: space-around;
     }
 
     .hero-data {
         font-size: 2rem;
         margin: auto;
+        padding: 0rem;
     }
 
     .api-pull {

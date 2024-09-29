@@ -14,37 +14,43 @@
 
     <div class="data-container">
         <div class="hero-data">
-            <h1 id="name-display">Hero Name</h1>
+            <h1 id="hero-name-display">Hero Name</h1>
             <p id="first-appearance-stat">First appearance!</p>
+            
             <input type="text" placeholder="API request">
-            <button id="search-button">Search!</button>
+                <button id="search-button">Search!</button>
         </div>
     
         <div class="api-pull">
             <h2 id="civilian-name-display">Civilian Name!</h2>
             <h4 id="alignment-stat">Good guy/Bad guy</h4>
 
-            <img id="picDisplay" alt="Hero image!">
+            <img id="pic-display" alt="Hero image!">
 
             
             <div class="hero-stats">
-                <h3>Hero stats!</h3>
-                    <p id="combat-stat">combat!</p>
-                    <p id="durability-stat">Durability!</p>
-                    <p id="intelligence-stat">Intelligence!</p>
-                    <p id="power-stat">Power!</p>
-                    <p id="speed-stat">Speed!</p>
-                    <p id="strength-stat">Strength!</p>
-                <h3>Biography</h3>
-                    <p id="birthplace-stat">Birthplace</p>
-                    <p id="occupation-stat">Occupation</p>
-                    <p id="home-base-stat">home base</p>
-                <h3>Physical Stats</h3>
-                    <p id="race-stat">Human</p>
-                    <p id="height-stat">height, </p>
-                    <p id="weight-stat">weight, </p>
-                    <p id="gender-stat">gender</p>
-                <h3>Work</h3>
+                <h3 class="hero-stat-header" id="hero-fighting-power">Hero stats!</h3>
+                    <ul>
+                        <li id="combat-stat">combat!</li>
+                        <li id="durability-stat">Durability!</li>
+                        <li id="intelligence-stat">Intelligence!</li>
+                        <li id="power-stat">Power!</li>
+                        <li id="speed-stat">Speed!</li>
+                        <li id="strength-stat">Strength!</li>
+                    </ul>
+                <h3 class="hero-stat-header" id="hero-biography">Biography</h3>
+                    <ul>
+                        <li id="birthplace-stat">Birthplace</li>
+                        <li id="occupation-stat">Occupation</li>
+                        <li id="home-base-stat">home base</li>
+                    </ul>
+                <h3 class="hero-stat-header" id="hero-physical-info">Physical Stats</h3>
+                    <ul>
+                        <li id="race-stat">Human</li>
+                        <li id="height-stat">height, </li>
+                        <li id="weight-stat">weight, </li>
+                        <li id="gender-stat">gender</li>
+                    </ul>
 
             </div>
         </div>
