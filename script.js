@@ -9,75 +9,50 @@ const buttonThree = document.querySelector('#btn3')
 const buttonFour = document.querySelector('#btn4')
 const userInput = document.querySelector('input')
 
+/* Will be created when user decides to save their hero for later*/
+const previousHeroPic = document.querySelectorAll('li')
+
 /* Display elements */
 
 const nameDisplayHero = document.querySelector('#hero-name-display')
 const nameDisplayCivilian = document.querySelector('#civilian-name-display')
 const imageEl = document.querySelector('#pic-display')
 
+const previousHeroList = document.querySelector('.previous-hero-list')
+
 /* Character stats elements */
 
-const intelligenceStat = document.querySelector('#intelligence-stat')
-const strengthStat = document.querySelector('#strength-stat')
-const speedStat = document.querySelector('#speed-stat')
-const durabilityStat = document.querySelector('#durability-stat')
-const powerStat = document.querySelector('#power-stat')
-const combatStat = document.querySelector('#combat-stat')
-
-const birthplaceStat = document.querySelector('#birthplace-stat')
-
-const raceStat = document.querySelector('#race-stat')
-const heightStat = document.querySelector('#height-stat')
-const weightStat = document.querySelector('#weight-stat')
-const genderStat = document.querySelector('#gender-stat')
-
-const occupationStat = document.querySelector('#occupation-stat')
-const homeBaseStat = document.querySelector('#home-base-stat')
+const heroStatHeader = document.querySelector('.hero-stat-header')
+const heroStatItems = document.querySelector('#hero-stat-items')
 
 const firstAppearanceStat = document.querySelector('#first-appearance-stat')
 const publisherStat = document.querySelector('#publisher-stat')
 const alignmentStat = document.querySelector('#alignment-stat')
 
-/* This might make the above obselete */
+/* Company logos */
 
-const heroStatHeader = document.querySelector('.hero-stat-header')
-const heroStat1 = document.querySelector('#hero-stat-1')
-const heroStat2 = document.querySelector('#hero-stat-2')
-const heroStat3 = document.querySelector('#hero-stat-3')
-const heroStat4 = document.querySelector('#hero-stat-4')
-const heroStat5 = document.querySelector('#hero-stat-5')
-const heroStat6 = document.querySelector('#hero-stat-6')
-
-/* Special backgrounds */
-
-// const marvelLogo = './publisher-logos/marvel-logo.png'
-// const dcLogo = './publisher-logos/dc-logo.png'
-// const lucasFilmLogo = './publisher-logos/lucasfilm-logo.png'
-// const imageComicsLogo = './publisher-logos/image-comics-logo.png'
-// const darkHorseLogo = './publisher-logos/dark-horse-comics-logo.png'
-// const shueishaLogo = './publisher-logos/shueisha-logo.png'
-// const idwLogo = './publisher-logos/idw-publishing-logo.png'
-// const harperCollinsLogo = './publisher-logos/harpercollins-logo.jpg'
-
-const marvelLogo = './publisher-logos/Marvel-Logo.svg'
-const dcLogo = './publisher-logos/dc-logo.png'
+const marvelLogo = './publisher-logos/Marvel-Logo.svg' // Use of svg rather than png logos prevents logo from taking up entire screen
+const dcLogo = './publisher-logos/dc-logo.svg'
 const lucasFilmLogo = './publisher-logos/lucasfilm-logo.svg'
 const imageComicsLogo = './publisher-logos/image-comics-logo.svg'
 const darkHorseLogo = './publisher-logos/dark-horse-comics-logo.svg'
 const shueishaLogo = './publisher-logos/Shueisha-Logo.svg'
 const idwLogo = './publisher-logos/idw-publishing-logo.svg'
 const harperCollinsLogo = './publisher-logos/harpercollins-logo.jpg'
+const microsoftLogo = './publisher-logos/microsoft-logo-2.svg'
+
+/* Special backgrounds */
 
 const redBackground = './backgrounds/red-bg.jpg'
 const blueBackground = './backgrounds/blue-bg.jpg'
 const spaceBackground = './backgrounds/star-wars-bg.jpg'
 const sewerBackground = './backgrounds/tmnt-sewer-bg-2.jpg'
 const mangaBackground = './backgrounds/manga-bg.jpg'
+const haloBackground = './backgrounds/halo-bg.png'
 const mixedBackground = './backgrounds/mixed-bg.jpg'
-console.log(marvelLogo, dcLogo, shueishaLogo)
 
 
-searchButton.addEventListener('click', async () => { /* Pulls image and hero stats when search button is clicked*/
+searchButton.addEventListener('click', async () => { /* Pulls image and hero stats when search button is clicked */
 
     /* Collects search results for user input */
     let heroName = userInput.value
@@ -166,6 +141,18 @@ toggleStatsButton.addEventListener('click', async () => {
 
 })
 
+buttonThree.addEventListener('click', async (params) => {
+    if (imageEl.alt !== 'Hero image!') {
+        let previousHero = document.createElement('li')
+        console.log(previousHero)
+        previousHero.innerHTML = `<li><img src='${imageEl.src}' alt='${imageEl.alt}'></li>`
+        console.log(previousHero.innerHTML)
+        previousHeroList.prepend(previousHero) // I asked ChatGPT about Prepend, asked it for "Opposite of appendChild"
+                                               // https://chatgpt.com/share/66faf8f9-aaa8-8012-9c3f-e972c4c0ebf8
+        console.log(previousHeroList)
+    }
+})
+
 
 
 
@@ -196,12 +183,13 @@ function setHeroStats(responseDrill, heroPic, heroID) {
 
     heroStatHeader.innerHTML = `<h3>BATTLE STATS</h3>`
 
-    heroStat1.innerHTML = `<p><strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>`
-    heroStat2.innerHTML = `<p><strong>Strength</strong> - ${responseDrill.powerstats.strength}</p>`
-    heroStat3.innerHTML = `<p><strong>Speed</strong> - ${responseDrill.powerstats.speed}</p>`
-    heroStat4.innerHTML = `<p><strong>Durability</strong> - ${responseDrill.powerstats.durability}</p>`
-    heroStat5.innerHTML = `<p><strong>Super power score</strong> - ${responseDrill.powerstats.power}</p>`
-    heroStat6.innerHTML = `<p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}</p>`
+    heroStatItems.innerHTML = 
+    `<p><strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>
+     <p><strong>Strength</strong> - ${responseDrill.powerstats.strength}</p>
+     <p><strong>Speed</strong> - ${responseDrill.powerstats.speed}</p>
+     <p><strong>Durability</strong> - ${responseDrill.powerstats.durability}</p>
+     <p><strong>Super power score</strong> - ${responseDrill.powerstats.power}</p>
+     <p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}</p>`
 
     /* =============== Meta stuff, hero's alignment and first appearance =============== */
 
@@ -260,6 +248,11 @@ function setBackground(heroPublisher) {
         publisherStat.setAttribute ('alt', heroPublisher)
         document.body.style.background = `url(${mixedBackground})`
 
+    } else if (heroPublisher === 'Microsoft') {
+        publisherStat.setAttribute ('src', microsoftLogo)
+        publisherStat.setAttribute ('alt', heroPublisher)
+        document.body.style.background = `url(${haloBackground})`
+
     } else {
         publisherStat.setAttribute ('src', '')
         publisherStat.setAttribute ('alt', '')
@@ -284,12 +277,11 @@ function toggleDisplayedStats(responseDrill, heroStatHeader) {
 
         heroStatHeader.innerHTML = `<h3>PHYSICAL STATS</h3>`
         
-        heroStat1.innerHTML = `<p><strong>HEIGHT</strong> - ${responseDrill.appearance.height[0]}</p>`
-        heroStat2.innerHTML = `<p><strong>WEIGHT</strong> - ${responseDrill.appearance.weight[0]}</p>`
-        heroStat3.innerHTML = `<p><strong>RACE</strong> - ${responseDrill.appearance.race}</p>`
-        heroStat4.innerHTML = `<p><strong>GENDER</strong> - ${responseDrill.appearance.gender}</p>`
-        heroStat5.innerHTML = `<p><strong>-</strong>-</p>`
-        heroStat6.innerHTML = `<p><strong>-</strong>-</p>`
+        heroStatItems.innerHTML = 
+        `<p><strong>HEIGHT</strong> - ${responseDrill.appearance.height[0]}</p>
+        <p><strong>WEIGHT</strong> - ${responseDrill.appearance.weight[0]}</p>
+        <p><strong>RACE</strong> - ${responseDrill.appearance.race}</p>
+        <p><strong>GENDER</strong> - ${responseDrill.appearance.gender}</p>`
 
     } else if (heroStatHeader.innerHTML === `<h3>PHYSICAL STATS</h3>`) {
 
@@ -297,12 +289,10 @@ function toggleDisplayedStats(responseDrill, heroStatHeader) {
 
         heroStatHeader.innerHTML = `<h3>BIOGRAPHY STATS</h3>`
         
-        heroStat1.innerHTML = `<p><strong>Civilian Name</strong> - ${responseDrill.biography['full-name']}</p>`
-        heroStat2.innerHTML = `<p><strong>Place of Birth</strong> - ${responseDrill.biography['place-of-birth']}</p>`
-        heroStat3.innerHTML = `<p><strong>Lives in</strong> - ${responseDrill.work.base}</p>`
-        heroStat4.innerHTML = `<p><strong>Occupation</strong> - ${responseDrill.work.occupation}</p>`
-        heroStat5.innerHTML = `<p><strong>-</strong>-</p>`
-        heroStat6.innerHTML = `<p><strong>-</strong>-</p>`
+        heroStatItems.innerHTML = `<p><strong>Civilian Name</strong> - ${responseDrill.biography['full-name']}</p>
+        <p><strong>Place of Birth</strong> - ${responseDrill.biography['place-of-birth']}</p>
+        <p><strong>Lives in</strong> - ${responseDrill.work.base}</p>
+        <p><strong>Occupation</strong> - ${responseDrill.work.occupation}</p>`
 
     } else if (heroStatHeader.innerHTML === `<h3>BIOGRAPHY STATS</h3>`) {
 
@@ -310,16 +300,16 @@ function toggleDisplayedStats(responseDrill, heroStatHeader) {
         
         heroStatHeader.innerHTML = `<h3>BATTLE STATS</h3>`
 
-        heroStat1.innerHTML = `<p><strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>`
-        heroStat2.innerHTML = `<p><strong>Strength</strong> - ${responseDrill.powerstats.strength}</p>`
-        heroStat3.innerHTML = `<p><strong>Speed</strong> - ${responseDrill.powerstats.speed}</p>`
-        heroStat4.innerHTML = `<p><strong>Durability</strong> - ${responseDrill.powerstats.durability}</p>`
-        heroStat5.innerHTML = `<p><strong>Super power score</strong> - ${responseDrill.powerstats.power}</p>`
-        heroStat6.innerHTML = `<p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}</p>`
+        heroStatItems.innerHTML = `<p><strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>
+        <p><strong>Strength</strong> - ${responseDrill.powerstats.strength}</p>
+        <p><strong>Speed</strong> - ${responseDrill.powerstats.speed}</p>
+        <p><strong>Durability</strong> - ${responseDrill.powerstats.durability}</p>
+        <p><strong>Super power score</strong> - ${responseDrill.powerstats.power}</p>
+        <p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}</p>`
 
     } else {
-        
+
         console.log('IDK')
-        alert('Something went wrong, please reload page')
+        alert(`Error: You don't have any heroes yet!`)
     }
 }

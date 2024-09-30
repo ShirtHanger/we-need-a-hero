@@ -115,5 +115,11 @@ Also consider list style image
 
 Try using float left/right for styling too
 
+=============== Sep 30th ================
+
+For updating list of previous heroes, review this exercise from bootcamp prep
+
+https://github.com/eric-klimowich/bootcamp-prep-part-2-2024/blob/main/dom-events/responding-to-events/responding-to-events.md
+
 
 ============= Glitches ============
