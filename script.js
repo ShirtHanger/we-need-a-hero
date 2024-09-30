@@ -5,18 +5,23 @@ const publicKey = '749a30707cb8e9fdcef7e93c31353b2b'
 const searchButton = document.querySelector('#search-button')
 const randomHeroButton = document.querySelector('#random-hero-button')
 const toggleStatsButton = document.querySelector('#toggle-stats-button')
-const buttonThree = document.querySelector('#btn3')
+const saveHeroButton = document.querySelector('#save-hero-button')
 const buttonFour = document.querySelector('#btn4')
 const userInput = document.querySelector('input')
 
-/* Will be created when user decides to save their hero for later*/
-const previousHeroPic = document.querySelectorAll('li')
+/* Will be created when user decides to save their hero for later
+Trying to figure out which one works */
+// const previousHeroPics = document.querySelectorAll('#previous-hero')
+// const previousHeroPics = document.querySelectorAll('li')
 
 /* Display elements */
 
 const nameDisplayHero = document.querySelector('#hero-name-display')
 const nameDisplayCivilian = document.querySelector('#civilian-name-display')
 const imageEl = document.querySelector('#pic-display')
+
+const previousHeroContainer = document.querySelector('.previous-hero-container')
+const previousHeroHeader = document.querySelector('h5')
 
 const previousHeroList = document.querySelector('.previous-hero-list')
 
@@ -56,6 +61,9 @@ searchButton.addEventListener('click', async () => { /* Pulls image and hero sta
 
     /* Collects search results for user input */
     let heroName = userInput.value
+
+    hyphenJoke(heroName) // See bottom of file
+
     let responseSearch = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/search/${heroName}`)
     /* response is an object containing an Array of objects 😵‍💫 */
 
@@ -87,7 +95,7 @@ searchButton.addEventListener('click', async () => { /* Pulls image and hero sta
 
     console.log(heroData.biography.publisher)
 
-    setBackground(heroData.biography.publisher)
+    setAesthetic(heroData.biography.publisher)
 })
 
 randomHeroButton.addEventListener('click', async (params) => {
@@ -115,7 +123,7 @@ randomHeroButton.addEventListener('click', async (params) => {
 
     console.log(heroData.biography.publisher)
 
-    setBackground(heroData.biography.publisher)
+    setAesthetic(heroData.biography.publisher)
 
 
 })
@@ -141,11 +149,15 @@ toggleStatsButton.addEventListener('click', async () => {
 
 })
 
-buttonThree.addEventListener('click', async (params) => {
+saveHeroButton.addEventListener('click', async () => {
+    /* Adds image of currently displayed hero to the bottom of page */
+    /* Plan on creating an extra function to re-pull that same heroes data again when image is clicked */
     if (imageEl.alt !== 'Hero image!') {
+
+        previousHeroHeader.style.visibility = `visible`
         let previousHero = document.createElement('li')
         console.log(previousHero)
-        previousHero.innerHTML = `<li><img src='${imageEl.src}' alt='${imageEl.alt}'></li>`
+        previousHero.innerHTML = `<img src='${imageEl.src}' alt='${imageEl.alt}' class="superhero-image" id='previous-hero'>`
         console.log(previousHero.innerHTML)
         previousHeroList.prepend(previousHero) // I asked ChatGPT about Prepend, asked it for "Opposite of appendChild"
                                                // https://chatgpt.com/share/66faf8f9-aaa8-8012-9c3f-e972c4c0ebf8
@@ -155,8 +167,20 @@ buttonThree.addEventListener('click', async (params) => {
 
 
 
+/* Trying to test out the "Pull previous hero stats" functionality. */
 
+for (previousHero of previousHeroPics) {
+    previousHero.addEventListener('click', async () => {
+        console.log('Clicking works')
+        console.log(previousHero.alt)
+        console.log(previousHero.src)
+    })
+}
 
+buttonFour.addEventListener('click', async () => {
+    console.log('Clicking works')
+    console.log(previousHeroPics)    
+})
 
 
 
@@ -181,15 +205,15 @@ function setHeroStats(responseDrill, heroPic, heroID) {
 
     /* Sets Power rating stats. Other stats (Biography, physical, etc.) will be toggled via another function */
 
-    heroStatHeader.innerHTML = `<h3>BATTLE STATS</h3>`
+    heroStatHeader.innerHTML = `BATTLE STATS`
 
     heroStatItems.innerHTML = 
-    `<p><strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>
+    `<strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>
      <p><strong>Strength</strong> - ${responseDrill.powerstats.strength}</p>
      <p><strong>Speed</strong> - ${responseDrill.powerstats.speed}</p>
      <p><strong>Durability</strong> - ${responseDrill.powerstats.durability}</p>
      <p><strong>Super power score</strong> - ${responseDrill.powerstats.power}</p>
-     <p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}</p>`
+     <p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}`
 
     /* =============== Meta stuff, hero's alignment and first appearance =============== */
 
@@ -204,59 +228,41 @@ function randNum(maxNum) {
     return randIndex
   }
 
-function setBackground(heroPublisher) {
+function setAesthetic(heroPublisher) {
 
     /* Sets background of page and Logo depending on publisher */
+    /* Planning on setting more aesthetics with this */
 
     if (heroPublisher === 'Marvel Comics') {
-        publisherStat.setAttribute ('src', marvelLogo)
-        publisherStat.setAttribute ('alt', heroPublisher)
-        document.body.style.background = `url(${redBackground})`
+
+        setBackground(marvelLogo, heroPublisher, redBackground)
 
     } else if (heroPublisher === 'DC Comics') {
-        publisherStat.setAttribute ('src', dcLogo)
-        publisherStat.setAttribute ('alt', heroPublisher)
-        document.body.style.background = `url(${blueBackground})`
+        setBackground(dcLogo, heroPublisher, blueBackground)
 
     } else if (heroPublisher === 'Shueisha') {
-        publisherStat.setAttribute ('src', shueishaLogo)
-        publisherStat.setAttribute ('alt', heroPublisher)
-        document.body.style.background = `url(${mangaBackground})`
+        setBackground(shueishaLogo, heroPublisher, mangaBackground)
 
     } else if (heroPublisher === 'George Lucas') {
-        publisherStat.setAttribute ('src', lucasFilmLogo)
-        publisherStat.setAttribute ('alt', heroPublisher)
-        document.body.style.background = `url(${spaceBackground})`
+        setBackground(lucasFilmLogo, heroPublisher, spaceBackground)
 
     } else if (heroPublisher === 'Image Comics') {
-        publisherStat.setAttribute ('src', imageComicsLogo)
-        publisherStat.setAttribute ('alt', heroPublisher)
-        document.body.style.background = `url(${mixedBackground})`
+        setBackground(imageComicsLogo, heroPublisher, mixedBackground)
 
     } else if (heroPublisher === 'Dark Horse Comics') {
-        publisherStat.setAttribute ('src', darkHorseLogo)
-        publisherStat.setAttribute ('alt', heroPublisher)
-        document.body.style.background = `url(${mixedBackground})`
+        setBackground(darkHorseLogo, heroPublisher, mixedBackground)
 
     } else if (heroPublisher === 'IDW Publishing') {
-        publisherStat.setAttribute ('src', idwLogo)
-        publisherStat.setAttribute ('alt', heroPublisher)
-        document.body.style.background = `url(${sewerBackground})`
+        setBackground(idwLogo, heroPublisher, sewerBackground)
         
     } else if (heroPublisher === 'HarperCollins') {
-        publisherStat.setAttribute ('src', harperCollinsLogo)
-        publisherStat.setAttribute ('alt', heroPublisher)
-        document.body.style.background = `url(${mixedBackground})`
+        setBackground(harperCollinsLogo, heroPublisher, mixedBackground)
 
     } else if (heroPublisher === 'Microsoft') {
-        publisherStat.setAttribute ('src', microsoftLogo)
-        publisherStat.setAttribute ('alt', heroPublisher)
-        document.body.style.background = `url(${haloBackground})`
+        setBackground(microsoftLogo, heroPublisher, haloBackground)
 
     } else {
-        publisherStat.setAttribute ('src', '')
-        publisherStat.setAttribute ('alt', '')
-        document.body.style.background = `url(${mixedBackground})`
+        setBackground('', heroPublisher, mixedBackground)
     }
 
     // Fixes repeating background
@@ -271,45 +277,76 @@ function toggleDisplayedStats(responseDrill, heroStatHeader) {
     /* Swaps which stats are displayed when "Toggle stats" button is clicked */
 
 
-    if (heroStatHeader.innerHTML === `<h3>BATTLE STATS</h3>`) {
+    if (heroStatHeader.innerHTML === `BATTLE STATS`) {
 
         // Set to physical stats
 
-        heroStatHeader.innerHTML = `<h3>PHYSICAL STATS</h3>`
+        heroStatHeader.innerHTML = `PHYSICAL STATS`
         
         heroStatItems.innerHTML = 
-        `<p><strong>HEIGHT</strong> - ${responseDrill.appearance.height[0]}</p>
+        `<strong>HEIGHT</strong> - ${responseDrill.appearance.height[0]}</p>
         <p><strong>WEIGHT</strong> - ${responseDrill.appearance.weight[0]}</p>
         <p><strong>RACE</strong> - ${responseDrill.appearance.race}</p>
-        <p><strong>GENDER</strong> - ${responseDrill.appearance.gender}</p>`
+        <p><strong>GENDER</strong> - ${responseDrill.appearance.gender}`
 
-    } else if (heroStatHeader.innerHTML === `<h3>PHYSICAL STATS</h3>`) {
+    } else if (heroStatHeader.innerHTML === `PHYSICAL STATS`) {
 
         //Set to bio stats
 
-        heroStatHeader.innerHTML = `<h3>BIOGRAPHY STATS</h3>`
+        heroStatHeader.innerHTML = `BIOGRAPHY STATS`
         
-        heroStatItems.innerHTML = `<p><strong>Civilian Name</strong> - ${responseDrill.biography['full-name']}</p>
+        heroStatItems.innerHTML = `<strong>Civilian Name</strong> - ${responseDrill.biography['full-name']}</p>
         <p><strong>Place of Birth</strong> - ${responseDrill.biography['place-of-birth']}</p>
         <p><strong>Lives in</strong> - ${responseDrill.work.base}</p>
-        <p><strong>Occupation</strong> - ${responseDrill.work.occupation}</p>`
+        <p><strong>Occupation</strong> - ${responseDrill.work.occupation}`
 
-    } else if (heroStatHeader.innerHTML === `<h3>BIOGRAPHY STATS</h3>`) {
+    } else if (heroStatHeader.innerHTML === `BIOGRAPHY STATS`) {
 
         // Set to battle stats
         
-        heroStatHeader.innerHTML = `<h3>BATTLE STATS</h3>`
+        heroStatHeader.innerHTML = `BATTLE STATS`
 
-        heroStatItems.innerHTML = `<p><strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>
+        heroStatItems.innerHTML = `<strong>Intelligence</strong> - ${responseDrill.powerstats.intelligence}</p>
         <p><strong>Strength</strong> - ${responseDrill.powerstats.strength}</p>
         <p><strong>Speed</strong> - ${responseDrill.powerstats.speed}</p>
         <p><strong>Durability</strong> - ${responseDrill.powerstats.durability}</p>
         <p><strong>Super power score</strong> - ${responseDrill.powerstats.power}</p>
-        <p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}</p>`
+        <p><strong>Combat Skills</strong> - ${responseDrill.powerstats.combat}`
 
     } else {
 
         console.log('IDK')
         alert(`Error: You don't have any heroes yet!`)
     }
+}
+
+function hyphenJoke(input) { 
+    /* If the user (Foolishly) forgets to hyphenate Spider-Man's name, tell them as such */
+    /* AND if they (Foolishly) hyphenate Batman's name... */
+    const spiderNames = [
+        'spiderman', 'spider man',
+        'spiderwoman', 'spider woman',
+        'spidergwen', 'spider gwen',
+        'spidergirl', 'spider girl',
+        'spidercarnage', 'spider carnage',        
+    ]
+    for (spiderName of spiderNames) {
+        if (input.toLowerCase() === spiderName) {
+            alert('🕸️You forgot the hyphen🕸️')
+            break
+        }
+    }
+    const batHyphens = ['bat-man', 'bat-girl', 'bat-woman']
+    for (batName of batHyphens) {
+        if (input.toLowerCase() === batName) {
+            alert('🦇Why the hyphen?🦇')
+            break
+        }
+    }
+}
+
+function setBackground(companyLogo, heroPublisher, companyBackground) {
+        publisherStat.setAttribute ('src', companyLogo)
+        publisherStat.setAttribute ('alt', heroPublisher)
+        document.body.style.background = `url(${companyBackground})`
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 body {
     display: block;
     text-align: center;
@@ -7,11 +9,18 @@ body {
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    color: white;
+    color: silver;
     font: bolder;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Bangers", system-ui;
+    font-weight: 400;
+    font-style: normal;
     text-decoration-color: black;
 }
+
+.superhero-image { /* Discovered via https://www.shecodes.io/athena/36159-how-to-make-an-image-50-smaller-with-css
+    Did not realize this was an AI website, I just google searched "How to make images smaller CSS" */
+    transform: scale(0.7);
+  }
 
 .data-container {
     display: flex;
@@ -38,9 +47,13 @@ body {
     background-position: center;
 }
 
+#civilian-name-display, #alignment-stat {
+    margin-bottom: 0rem;
+}
+
 #pic-display {
     object-fit: contain; /* https://www.w3schools.com/css/css3_object-fit.asp Knowledge get */
-    padding: 6rem; /* Padding of 6rem makes image center well for some reason pn desktop, not for mobile*/
+    padding: 0rem; /* Padding of 6rem makes image center well for some reason pn desktop, not for mobile*/
     margin: 0rem;
     border: 3px solid green;
     background-color: navy;
@@ -51,6 +64,10 @@ body {
 
 img {
     border: 3px solid orange;
+}
+
+h5 {
+    visibility: hidden;
 }
 
 .hero-stats {
@@ -64,12 +81,27 @@ img {
 }
 
 .hero-stat-items {
-    
+    border: 20px solid violet;
 }
 
 .right-side {
     margin: auto;
     flex-direction: column;
+}
+
+button, input {
+    padding: 2rem;
+    margin: 2rem;
+    background-color: blue;
+    font-family: "Bangers", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 35%;
+    text-decoration-color: black;
+}
+
+input {
+    background-color: antiquewhite;
 }
 
 #publisher-stat {
@@ -83,6 +115,12 @@ img {
     flex-direction: row;
     flex-wrap: wrap;
     list-style: none;
+    transform: scale(0.7);
+
+}
+
+#previous-hero {
+    border: 20px solid black;
 }
 
 @media screen and (max-width: 800px) {
