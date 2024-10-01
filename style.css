@@ -25,20 +25,20 @@ body {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    padding: 6rem; /* Padding of 6rem makes image center well for some reason on desktop, not for mobile */
+    padding: 0rem; /* Padding of 6rem makes image center well for some reason on desktop, not for mobile */
     margin: 0rem;
     scale: (0.7);
+    align-items: flex-start;
 }
 
 
 .hero-data {
     font-size: 1rem;
-    margin: auto;
 }
 
 .hero-card-full {
     letter-spacing: 0.1rem;
-    justify-content: center;
+    /* justify-content: center; */
     font-size: 1rem;
     border: 4px solid red;
     background-color: orange;
@@ -46,7 +46,8 @@ body {
     background-attachment: fixed;
     background-size: 100% 100%;
     background-position: inherit; */
-    transform: scale(0.8);
+    transform: scale(0.5);
+    align-self: center;
 }
 
 /* .hero-card-full:hover {
@@ -106,7 +107,6 @@ h5 {
 }
 
 .right-side {
-    margin: auto;
     flex-direction: column;
 }
 
@@ -163,77 +163,3 @@ input {
 
 /* Mobile design */
 
-
-@media screen and (max-width: 800px) {
-
-    body {
-        background-color: blueviolet; /* Here for testing  */
-        /* transform: scale(1.0); */
-    }
-
-    .data-container {
-        display: flex;
-        justify-content: center;
-        flex-direction: column-reverse;
-        padding: 0rem;
-        /* transform: scale(1.0); */
-    }
-
-    #pic-display {
-        padding: 0rem;
-        justify-content: space-evenly;
-        transform: scale(1.0);
-    }
-
-    .hero-data {
-        font-size: 2rem;
-        margin: auto;
-        padding: 0rem;
-        /* transform: scale(1.0); */
-    }
-
-    .hero-card-full {
-        justify-content: center;
-        font-size: 2rem;
-        /* transform: scale(1.0); */
-    }
-
-    .right-side {
-        justify-content: center;
-        flex-direction: row;
-        /* transform: scale(1.0); */
-    }
-
-    .previous-hero-list {
-        flex-direction: column;
-        flex-wrap: wrap-reverse;
-        transform: scale(0.8);
-    }
-
-
-
-}
-
-/* This allows the user prints their card only */
-
-/* Googled how to do this: https://stackoverflow.com/questions/468881/print-div-id-printarea-div-only */
-
-@media print { 
-    /* When the DOM calls the "Print" function, make everything invisible and make the hero card 
-    take up entire page. Prints neat card */
-    /* Currently, cuts off at bottom of page */
-    body {
-      visibility: hidden;
-    }
-    .hero-card-full {
-      visibility: visible;
-      position: absolute;
-      left: 0;
-      top: 0;
-      transform: scale(0.5);
-    }
-
-    #pic-display {
-        transform: scale(1.0);
-    }
-  }

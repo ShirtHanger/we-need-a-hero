@@ -88,16 +88,18 @@ South Park (Captain hindsight)
 ABC Studios (200)
 Universal Studios (203)
 Star Trek (210)
-J. R. R. Tolkien (574)
 SyFy (277)
 J. K. Rowling (310)
 Sony Pictures (308)
 Titan Books (352)
 Rebellion (373)
 Team Epic TV (153)
-Hanna-Barbera (91)
 
 Background + Logo found
+J. R. R. Tolkien (574)
+Hanna-Barbera (91)
+
+
 
 731 total heroes in API list
     "Random hero" button must have a random number between 1 and 731
