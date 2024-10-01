@@ -75,31 +75,34 @@ IDW Publishing (TEENAGE MUTANT NINJA TURTLES!)
 HarperCollins
 Microsoft (Halo)
 
-ADD LATER:
-
-https://www.superheroapi.com/api.php/749a30707cb8e9fdcef7e93c31353b2b/620
-https://superheroapi.com/ids.html
-
-NBC - Heroes (ID 7)
-Wildstorm (15)
-Archangel (24)
-Icon Comics (82)
-South Park (Captain hindsight)
-ABC Studios (200)
-Universal Studios (203)
-Sony Pictures (308)
-Rebellion (373)
-Team Epic TV (153)
+CODE LATER:
 
 Background + Logo found
 J. R. R. Tolkien (574)
 Hanna-Barbera (91)
 J. K. Rowling (310)
 Star Trek (210)
+Rebellion (373)
+South Park (Captain hindsight)
 
 Just logo found
+Icon Comics (82)
 SyFy (277)
 Titan Books (352)
+
+ADD LATER:
+
+https://www.superheroapi.com/api.php/749a30707cb8e9fdcef7e93c31353b2b/373
+https://superheroapi.com/ids.html
+373
+
+NBC - Heroes (ID 7)
+Wildstorm (15)
+Archangel (24)
+ABC Studios (200)
+Universal Studios (203)
+Sony Pictures (308)
+Team Epic TV (153)
 
 
 
