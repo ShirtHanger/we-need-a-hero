@@ -87,17 +87,19 @@ Icon Comics (82)
 South Park (Captain hindsight)
 ABC Studios (200)
 Universal Studios (203)
-Star Trek (210)
-SyFy (277)
-J. K. Rowling (310)
 Sony Pictures (308)
-Titan Books (352)
 Rebellion (373)
 Team Epic TV (153)
 
 Background + Logo found
 J. R. R. Tolkien (574)
 Hanna-Barbera (91)
+J. K. Rowling (310)
+Star Trek (210)
+
+Just logo found
+SyFy (277)
+Titan Books (352)
 
 
 
@@ -154,3 +156,15 @@ https://github.com/eric-klimowich/bootcamp-prep-part-2-2024/blob/main/dom-events
     Clean up your code, psuedocode, and notes
         Remove commented out code
     Deploy on surge (https://surge.sh/)
+
+== October 1st ==
+
+To consolidate changing background,
+    1. Put all images into an image editor, make them all PNG
+    2. name all files EXACTLY like the publisher string
+    3. Something like....
+        style.background = url(`./backgrounds/${heroPublisher}-bg.png`)
+        
+    for the ones that dont have special background
+
+    OR consolidate everything into an object
