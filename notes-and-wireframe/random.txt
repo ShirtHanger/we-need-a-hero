@@ -95,6 +95,9 @@ Sony Pictures (308)
 Titan Books (352)
 Rebellion (373)
 Team Epic TV (153)
+Hanna-Barbera (91)
+
+Background + Logo found
 
 731 total heroes in API list
     "Random hero" button must have a random number between 1 and 731
@@ -142,3 +145,10 @@ https://github.com/eric-klimowich/bootcamp-prep-part-2-2024/blob/main/dom-events
 
 
 ============= Glitches ============
+
+============= To do list ==============
+
+(Required stuff)
+    Clean up your code, psuedocode, and notes
+        Remove commented out code
+    Deploy on surge (https://surge.sh/)

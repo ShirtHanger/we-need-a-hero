@@ -7,11 +7,10 @@ body {
     background: url('./backgrounds/mixed-bg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     color: silver;
-    font: bolder;
-    font-family: "Bangers", system-ui;
+    font-family: "Bangers", sans-serif;
     font-weight: 400;
     font-style: normal;
     text-decoration-color: black;
@@ -37,27 +36,30 @@ body {
     margin: auto;
 }
 
-.api-pull {
+.hero-card-full {
+    letter-spacing: 0.1rem;
     justify-content: center;
     font-size: 1rem;
     border: 4px solid red;
     background-color: orange;
+    /* background: url('/card-backgrounds/default-card.png');
     background-attachment: fixed;
-    background-size: contain;
-    background-position: center;
-    transform: scale(0.8)
+    background-size: 100% 100%;
+    background-position: inherit; */
+    transform: scale(0.8);
 }
 
-.api-pull:hover {
+/* .hero-card-full:hover {
     transform: scale(0.9)
-}
+} */
 
 .card-top {
     margin-bottom: 0rem;
-    font-size: 1rem;
+    font-size: 2rem;
+    font: bolder;
     border: 3px dashed gray;
     background-color: purple;
-    scale: (0.5);
+    transform: scale(1.0);
 }
 
 #pic-display {
@@ -67,8 +69,14 @@ body {
     border: 3px solid green;
     background-color: navy;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
+    transform: scale(0.7);
+    transition: transform 0.5s;
+}
+
+#pic-display:hover {
+    transform: scale(1.0);
 }
 
 img {
@@ -84,14 +92,17 @@ h5 {
     border: 3px solid silver;
     background-color: brown;
     flex-direction: column;
+    margin-top: 0rem;
+    font-size: 1rem;
 }
 
 .hero-stat-header {
     border: 4px solid orange;
+    font-size: 2rem;
 }
 
 .hero-stat-items {
-    border: 20px solid violet;
+    /* Doesn't seem to work */
 }
 
 .right-side {
@@ -107,11 +118,11 @@ button, input {
     font-weight: 400;
     font-style: normal;
     border-radius: 35%;
-    text-decoration-color: black;
+    text-decoration-color: green;
 }
 
 input {
-    background-color: antiquewhite;
+    background-color: silver;
 }
 
 #publisher-stat {
@@ -129,6 +140,11 @@ input {
     margin-top: -4rem;
 }
 
+.previous-hero-list img { /* Works with class, not ID for some reason */
+    transition: transform 0.5s;
+    /* IDK what to put here */
+}
+
 .previous-hero-list img:hover { /* Works with class, not ID for some reason */
     transform: scale(1.1)
     /* IDK what to put here */
@@ -136,7 +152,16 @@ input {
 
 #previous-hero {
     border: 20px solid black;
+    /* (Doesn't show for some reason)
+    background: url('/card-backgrounds/default-card.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100% 100%; */
+    
+    
 }
+
+/* Mobile design */
 
 
 @media screen and (max-width: 800px) {
@@ -167,7 +192,7 @@ input {
         /* transform: scale(1.0); */
     }
 
-    .api-pull {
+    .hero-card-full {
         justify-content: center;
         font-size: 2rem;
         /* transform: scale(1.0); */
@@ -188,3 +213,27 @@ input {
 
 
 }
+
+/* This allows the user prints their card only */
+
+/* Googled how to do this: https://stackoverflow.com/questions/468881/print-div-id-printarea-div-only */
+
+@media print { 
+    /* When the DOM calls the "Print" function, make everything invisible and make the hero card 
+    take up entire page. Prints neat card */
+    /* Currently, cuts off at bottom of page */
+    body {
+      visibility: hidden;
+    }
+    .hero-card-full {
+      visibility: visible;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: scale(0.5);
+    }
+
+    #pic-display {
+        transform: scale(1.0);
+    }
+  }

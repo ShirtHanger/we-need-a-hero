@@ -9,21 +9,19 @@ const saveHeroButton = document.querySelector('#save-hero-button')
 const buttonFour = document.querySelector('#btn4')
 const userInput = document.querySelector('input')
 
-/* Will be created when user decides to save their hero for later
-Trying to figure out which one works */
-// const previousHeroPics = document.querySelectorAll('#previous-hero')
-// const previousHeroPics = document.querySelectorAll('li')
-
 /* Display elements */
 
 const nameDisplayHero = document.querySelector('#hero-name-display')
 const nameDisplayCivilian = document.querySelector('#civilian-name-display')
+const heroCardFull = document.querySelector('.hero-card-full')
 const imageEl = document.querySelector('#pic-display')
+const cardBottom = document.querySelector('.card-bottom')
 
+/* Previous hero display elements */
+
+previousHeroList = document.querySelector('.previous-hero-list')
 const previousHeroContainer = document.querySelector('.previous-hero-container')
 const previousHeroHeader = document.querySelector('h5')
-
-const previousHeroList = document.querySelector('.previous-hero-list')
 
 /* Character stats elements */
 
@@ -34,7 +32,11 @@ const firstAppearanceStat = document.querySelector('#first-appearance-stat')
 const publisherStat = document.querySelector('#publisher-stat')
 const alignmentStat = document.querySelector('#alignment-stat')
 
+toggleStatsElements = [toggleStatsButton, cardBottom] /* Used for toggle stats event */
+
 /* Company logos */
+
+/* Refactor into an object later */
 
 const marvelLogo = './publisher-logos/Marvel-Logo.svg' // Use of svg rather than png logos prevents logo from taking up entire screen
 const dcLogo = './publisher-logos/dc-logo.svg'
@@ -54,6 +56,8 @@ const spaceBackground = './backgrounds/star-wars-bg.jpg'
 const sewerBackground = './backgrounds/tmnt-sewer-bg-2.jpg'
 const mangaBackground = './backgrounds/manga-bg.jpg'
 const haloBackground = './backgrounds/halo-bg.png'
+
+/* The default background */
 const mixedBackground = './backgrounds/mixed-bg.jpg'
 
 
@@ -128,31 +132,35 @@ randomHeroButton.addEventListener('click', async (params) => {
 
 })
 
-toggleStatsButton.addEventListener('click', async () => {
 
-    /* Pulls hero ID from alt to make things easier */
-    let heroID = imageEl.alt
-    console.log (heroID)
+for (toggleStatsElement of toggleStatsElements) {
+    
+    toggleStatsElement.addEventListener('click', async () => {
 
-    /* Collects API response again */
+        /* Pulls hero ID from alt to make things easier */
+        let heroID = imageEl.alt
+        console.log (heroID)
 
-    let responseID = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/${heroID}`)
+        /* Collects API response again */
 
-    console.log(`Swapping stats of: ${responseID.data.name}`)
+        let responseID = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/${heroID}`)
 
-    let heroData = responseID.data
-    console.log(heroData)
+        console.log(`Swapping stats of: ${responseID.data.name}`)
 
-    /* Calls toggle stat function */
+        let heroData = responseID.data
+        console.log(heroData)
 
-    toggleDisplayedStats(heroData, heroStatHeader)
+        /* Calls toggle stat function */
 
-})
+        toggleDisplayedStats(heroData, heroStatHeader)
+
+    })
+}
 
 saveHeroButton.addEventListener('click', async () => {
     /* Adds image of currently displayed hero to the bottom of page */
     /* Plan on creating an extra function to re-pull that same heroes data again when image is clicked */
-    if (imageEl.alt !== 'Hero image!') {
+    if (imageEl.alt !== '') {
 
         previousHeroHeader.style.visibility = `visible`
         let previousHero = document.createElement('li')
@@ -163,23 +171,19 @@ saveHeroButton.addEventListener('click', async () => {
                                                // https://chatgpt.com/share/66faf8f9-aaa8-8012-9c3f-e972c4c0ebf8
         console.log(previousHeroList)
     }
+    else {
+        alert("Error: You don't have a hero here!")
+    }
 })
 
-
-
-/* Trying to test out the "Pull previous hero stats" functionality. */
-
-for (previousHero of previousHeroPics) {
-    previousHero.addEventListener('click', async () => {
-        console.log('Clicking works')
-        console.log(previousHero.alt)
-        console.log(previousHero.src)
-    })
-}
-
 buttonFour.addEventListener('click', async () => {
-    console.log('Clicking works')
-    console.log(previousHeroPics)    
+    if (imageEl.alt !== '') {
+        print(heroCardFull)
+    } else {
+        alert("Error: You don't have a hero here!")
+    }
+    // alert('No functions to debug here!')   
+
 })
 
 
@@ -349,4 +353,17 @@ function setBackground(companyLogo, heroPublisher, companyBackground) {
         publisherStat.setAttribute ('src', companyLogo)
         publisherStat.setAttribute ('alt', heroPublisher)
         document.body.style.background = `url(${companyBackground})`
+}
+
+function setCardColor(heroAlignment) {
+    /* Changes card colors depending on hero's alignment */
+    if (heroAlignment === 'good') {
+        
+    } else if (heroAlignment === 'bad') {
+        
+    } else if (heroAlignment === 'neutral') {
+        
+    } else {
+        
+    }
 }
