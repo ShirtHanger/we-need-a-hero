@@ -211,6 +211,7 @@ saveHeroButton.addEventListener('click', async () => {
         previousHeroList.prepend(previousHero) // I asked ChatGPT about Prepend, asked it for "Opposite of appendChild"
                                                // https://chatgpt.com/share/66faf8f9-aaa8-8012-9c3f-e972c4c0ebf8
         console.log(previousHeroList)
+        setBoxShadow(previousHeroList)
     }
     else {
         alert("Error: You don't have a hero here!")
@@ -285,6 +286,15 @@ function setAesthetic(heroPublisher, heroAlignment) {
     setCardColor(heroAlignment)
 
     publisherStat.style.visibility = 'visible'
+    setBoxShadow(heroStatHeader)
+    setBoxShadow(publisherStat)
+    imageEl.style.border = '10px ridge green'
+
+    heroCardFull.style.border = '10px ridge red'
+    setBoxShadow(heroCardFull)
+    cardTop.style.border = '20px ridge gray'
+    heroStatHeader.style.border = '15px ridge darkorange'
+    cardBottom.style.border = '10px ridge silver'
 
     if (heroPublisher === 'Marvel Comics') {
 
@@ -479,4 +489,8 @@ function revealButtons(heroImage) {
             hiddenButton.style.visibility = `visible`
         }
     }
+}
+
+function setBoxShadow(element) {
+    element.style.boxShadow = '10px 10px 10px 10px black'
 }

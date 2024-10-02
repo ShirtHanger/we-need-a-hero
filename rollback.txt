@@ -21,6 +21,7 @@ body {
 
 h3 {
     font-size: 4rem;
+    box-shadow: 5px 5px 5px 5px black;
 }
 
 .main-title {
@@ -29,7 +30,6 @@ h3 {
     color: cyan;
     text-decoration: double;
     text-shadow: 2px 2px 4px black;
-    box-shadow: 5px 5px 5px 5px black;
 }
 
 .publisher-header {
@@ -50,15 +50,18 @@ img {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    transform: scale(0.7) translate(0px, -110px);
+    padding: 0rem; /* Padding of 6rem makes image center well for some reason on desktop, not for mobile */
+    margin: 0rem;
+    transform: scale(0.7) translate(0px, -100px);
     align-items: flex-start;
 }
 
 
 .hero-data {
     font-size: 1rem;
-    border-radius: 10%;
-    border: 10px groove firebrick;
+    border-radius: 0%;
+    background: darkcyan;
+    border: 2px solid magenta;
     box-shadow: 10px 10px 10px 10px black;
     background: url('./backgrounds/blue-bg.jpg');
     text-decoration: double;
@@ -67,32 +70,52 @@ img {
 
 #hero-name-display {
     background: darkolivegreen;
-    border: 8px groove darkblue;
+    border: 2px solid magenta;
     border-radius: 10%;
 }
+/* background: url('./backgrounds/comic-dots-bg-blue.jpg'); */
 
 #first-appearance-stat {
     background: maroon;
-    border: 5px groove goldenrod;
+    border: 2px solid darkgoldenrod;
     border-radius: 30%;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 
 .hero-card-full {
     letter-spacing: 0.1rem;
+    /* justify-content: center; */
     font-size: 1rem;
-    transform: scale(0.6) translate(0px, -520px); /* Transform only: entire hero card shifts downward. Ugly design. Fixed with translate */
+    border: 4px solid red;
+    background: orange;
+    /* background: url('/card-backgrounds/default-card.png');
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-position: inherit; */
+    transform: scale(0.6) translate(0px, -320px); /* When enabled, entire hero card shifts downward. Ugly design. Figure out how to fix */
     align-self: center;
+    /* You can fix it with this and manual adjustment if you are willing */
+    /* height: 60%; */
+    /* width: 60%; */
 }
 
 .card-top {
+    margin-bottom: 0rem;
     font-size: 2rem;
     font: bolder;
+    border: 3px dashed gray;
+    background: purple;
 }
 
 #pic-display {
     object-fit: contain; /* https://www.w3schools.com/css/css3_object-fit.asp Knowledge get */
+    padding: 0rem; /* Padding of 6rem makes image center well for some reason pn desktop, not for mobile*/
+    margin: 0rem;
+    border: 3px solid green;
     background: navy;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-position: center;
     transform: scale(0.7);
 }
 
@@ -105,7 +128,10 @@ h5 {
 }
 
 .card-bottom {
+    border: 3px solid silver;
+    background: brown;
     flex-direction: column;
+    margin-top: 0rem;
     font-size: 1rem;
 }
 
@@ -114,6 +140,7 @@ h5 {
 }
 
 .hero-stat-header {
+    border: 4px solid orange;
     font-size: 2rem;
     
 }
@@ -124,8 +151,9 @@ h5 {
 }
 
 .test-buttons {
+    background: crimson;
     background: url('./backgrounds/orange-bg.jpg');
-    border: 8px ridge darkblue;
+    border: 2px solid green;
     border-radius: 10%;
     box-shadow: 10px 10px 10px 10px black;
 }   
@@ -138,13 +166,13 @@ button, input {
     padding: 2rem;
     margin: 2rem;
     font-size: 1rem;
-    background-color: burlywood;
+    background: blue;
     font-family: "Bangers", sans-serif;
     font-weight: 400;
     font-style: normal;
     border-radius: 35%;
     text-decoration: double;
-    text-shadow: 2px 2px 4px firebrick;
+    text-shadow: 2px 2px 4px black;
 }
 
 #random-hero-button {
@@ -153,12 +181,12 @@ button, input {
 
 input {
     background: silver;
-    text-shadow: 2px 2px 2px black;
 }
 
 #publisher-stat {
     width: 50%;
     height: 50%;
+    /* box-shadow: 10px 10px 10px 10px black; */
     border-radius: 20%;
 }
 
@@ -166,25 +194,30 @@ input {
     transform: scale(1.2);
 }
 
+/* .previous-hero-container {
+} */
+
 .previous-hero-list {
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     list-style: none;
-    transform: scale(0.7) translate(0px, -800px);
-    margin-top: -10rem; /* Seems to not do much */
+    transform: scale(0.7) translate(0px, -500px);
+    margin-top: -10rem;
     background: url('./backgrounds/comic-dots-bg-blue.jpg');
     border-radius: 10%;
+    box-shadow: 10px 10px 10px 10px black;
+}
+
+.previous-hero-list img { /* Works with class, not ID for some reason */
+    transition: transform 0.5s;
+    /* IDK what to put here */
 }
 
 .previous-hero-list h1 {
-    border: 7px dashed firebrick;
+    border: 1px dashed red;
     background: crimson;
-}
-
-h5 {
-    transform: translate(0px, -600px);
 }
 
 .previous-hero-list img:hover { /* Works with class, not ID for some reason */
@@ -193,8 +226,9 @@ h5 {
 }
 
 #previous-hero {
-    border: 20px groove black;
-    border-radius: 10%;
+    border: 20px solid black;
+    
+    
 }
 
 /* Mobile design */
@@ -203,6 +237,7 @@ h5 {
 @media screen and (max-width: 800px) {
 
     body {
+        /* Here for testing  */
         transform: scale(0.9);
     }
 
@@ -210,10 +245,12 @@ h5 {
         display: flex;
         justify-content: center;
         flex-direction: column-reverse;
+        padding: 0rem;
         transform: scale(1.0)
     }
 
     #pic-display {
+        padding: 0rem;
         justify-content: space-evenly;
         transform: scale(1.0);
     }
@@ -225,6 +262,7 @@ h5 {
     .hero-data {
         font-size: 1.5rem;
         margin: auto;
+        /* transform: scale(1.0); */
     }
 
     .hero-card-full {
@@ -253,6 +291,8 @@ h5 {
         flex-wrap: wrap-reverse;
         transform: scale(0.7);
     }
+
+
 
 }
 
