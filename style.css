@@ -109,7 +109,6 @@ h5 {
 }
 
 .hero-stat-items {
-    
     /* Doesn't seem to work */
 }
 
@@ -167,11 +166,6 @@ input {
 
 #previous-hero {
     border: 20px solid black;
-    /* (Doesn't show for some reason)
-    background: url('/card-backgrounds/default-card.png');
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 100% 100%; */
     
     
 }
@@ -182,8 +176,8 @@ input {
 @media screen and (max-width: 800px) {
 
     body {
-        background-color: blueviolet; /* Here for testing  */
-        /* transform: scale(1.0); */
+        /* Here for testing  */
+        transform: scale(0.9);
     }
 
     .data-container {
@@ -202,7 +196,7 @@ input {
 
     .hero-data {
         font-size: 1.5rem;
-        padding: 0rem;
+        margin: auto;
         /* transform: scale(1.0); */
     }
 
@@ -224,7 +218,7 @@ input {
     }
 
     #publisher-stat {
-        transform: scale(1.5)
+        transform: scale(0.9)
     }
 
     .previous-hero-list {

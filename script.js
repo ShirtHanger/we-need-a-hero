@@ -12,6 +12,7 @@ const userInput = document.querySelector('input')
 
 /* Display elements */
 
+const dataContainer = document.querySelector('.data-container')
 const nameDisplayHero = document.querySelector('#hero-name-display')
 const nameDisplayCivilian = document.querySelector('#civilian-name-display')
 const heroCardFull = document.querySelector('.hero-card-full')
