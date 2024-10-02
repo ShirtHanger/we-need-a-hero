@@ -189,8 +189,8 @@ input {
     transform: scale(0.7) translate(0px, -700px);
     margin-top: -10rem;
     background: url('./backgrounds/comic-dots-bg-blue.jpg');
-    
     border-radius: 10%;
+    box-shadow: 10px 10px 10px 10px black;
 }
 
 .previous-hero-list img { /* Works with class, not ID for some reason */
