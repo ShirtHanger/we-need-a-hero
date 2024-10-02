@@ -64,7 +64,6 @@ body {
     border: 3px dashed gray;
     background-color: purple;
     transform: scale(1.0);
-    
 }
 
 #pic-display {
@@ -78,7 +77,6 @@ body {
     background-position: center;
     transform: scale(0.7);
     transition: transform 0.5s;
-    
 }
 
 #pic-display:hover {
@@ -194,6 +192,10 @@ input {
         transform: scale(1.0);
     }
 
+    button, input {
+        font-size: 2rem;
+    }
+
     .hero-data {
         font-size: 1.5rem;
         margin: auto;
@@ -207,7 +209,7 @@ input {
     }
 
     .card-bottom {
-        font-size: 2rem;
+        font-size: 2.3rem;
     }
 
     .right-side {

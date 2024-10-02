@@ -15,9 +15,12 @@ const userInput = document.querySelector('input')
 const dataContainer = document.querySelector('.data-container')
 const nameDisplayHero = document.querySelector('#hero-name-display')
 const nameDisplayCivilian = document.querySelector('#civilian-name-display')
+
 const heroCardFull = document.querySelector('.hero-card-full')
+const cardTop = document.querySelector('.card-top')
 const imageEl = document.querySelector('#pic-display')
 const cardBottom = document.querySelector('.card-bottom')
+
 const toggleNotice = document.querySelector('#toggle-notice')
 
 /* Previous hero display elements */
@@ -131,7 +134,7 @@ searchButton.addEventListener('click', async () => { /* Pulls image and hero sta
 
     console.log(heroData.biography.publisher)
 
-    setAesthetic(heroData.biography.publisher)
+    setAesthetic(heroData.biography.publisher, heroData.biography.alignment)
 
     revealButtons(imageEl)
 })
@@ -161,7 +164,7 @@ randomHeroButton.addEventListener('click', async (params) => {
 
     console.log(heroData.biography.publisher)
 
-    setAesthetic(heroData.biography.publisher)
+    setAesthetic(heroData.biography.publisher, heroData.biography.alignment)
 
     revealButtons(imageEl)
 
@@ -272,10 +275,12 @@ function randNum(maxNum) {
     return randIndex
   }
 
-function setAesthetic(heroPublisher) {
+function setAesthetic(heroPublisher, heroAlignment) {
 
-    /* Sets background of page and Logo depending on publisher */
+    /* Sets background of page/card and Logo depending on publisher and hero alignment */
     /* Planning on setting more aesthetics with this */
+
+    setCardColor(heroAlignment)
 
     if (heroPublisher === 'Marvel Comics') {
 
@@ -443,14 +448,24 @@ function setBackground(companyLogo, heroPublisher, companyBackground) {
 
 function setCardColor(heroAlignment) {
     /* Changes card colors depending on hero's alignment */
+    /* cardBottom.style.backgroundColor = '' */
+    /* 'linear-gradient(silver, gray, lightgray, silver)' */
     if (heroAlignment === 'good') {
-        
+        heroCardFull.style.backgroundColor = 'cornflowerblue'
+        cardTop.style.background = 'navy'
+        cardBottom.style.background = 'firebrick'
     } else if (heroAlignment === 'bad') {
-        
+        heroCardFull.style.background = 'darkslategrey'
+        cardTop.style.background = 'firebrick'
+        cardBottom.style.background = 'maroon'
     } else if (heroAlignment === 'neutral') {
-        
+        heroCardFull.style.background = 'darkmagenta'
+        cardTop.style.background = 'darkcyan'
+        cardBottom.style.background = 'darkslategrey'
     } else {
-        
+        heroCardFull.style.background = 'orange'
+        cardTop.style.background = 'purple'
+        cardBottom.style.background = 'brown'
     }
 }
 
