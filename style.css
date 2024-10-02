@@ -34,6 +34,16 @@ body {
 
 .hero-data {
     font-size: 1rem;
+    background: darkolivegreen;
+    border: 2px solid magenta;
+    border-radius: 50%;
+}
+
+#first-appearance-stat {
+    background: maroon;
+    border: 2px solid darkgoldenrod;
+    border-radius: 50%;
+    font-size: 1.5rem;
 }
 
 .hero-card-full {
@@ -41,7 +51,7 @@ body {
     /* justify-content: center; */
     font-size: 1rem;
     border: 4px solid red;
-    background-color: orange;
+    background: orange;
     /* background: url('/card-backgrounds/default-card.png');
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -53,16 +63,12 @@ body {
     /* width: 60%; */
 }
 
-/* .hero-card-full:hover {
-    transform: scale(0.9)
-} */
-
 .card-top {
     margin-bottom: 0rem;
     font-size: 2rem;
     font: bolder;
     border: 3px dashed gray;
-    background-color: purple;
+    background: purple;
     transform: scale(1.0);
 }
 
@@ -71,7 +77,7 @@ body {
     padding: 0rem; /* Padding of 6rem makes image center well for some reason pn desktop, not for mobile*/
     margin: 0rem;
     border: 3px solid green;
-    background-color: navy;
+    background: navy;
     background-attachment: fixed;
     background-size: 100% 100%;
     background-position: center;
@@ -93,11 +99,14 @@ h5 {
 
 .card-bottom {
     border: 3px solid silver;
-    background-color: brown;
+    background: brown;
     flex-direction: column;
     margin-top: 0rem;
     font-size: 1rem;
-    
+}
+
+#toggle-notice { 
+    visibility: hidden;
 }
 
 .hero-stat-header {
@@ -106,23 +115,23 @@ h5 {
     
 }
 
-.hero-stat-items {
-    /* Doesn't seem to work */
-}
-
 .right-side {
     flex-direction: column;
     justify-content: center;
+    background: crimson;
+    border: 2px solid purple;
+    border-radius: 50%;
 }
 
-.right-side, #toggle-notice { 
-    visibility: hidden;
+#publisher-stat {
+    background: darkslategray;
+    border: 2px solid tomato;
 }
 
 button, input {
     padding: 2rem;
     margin: 2rem;
-    background-color: blue;
+    background: blue;
     font-family: "Bangers", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -134,7 +143,7 @@ button, input {
 }
 
 input {
-    background-color: silver;
+    background: silver;
 }
 
 #publisher-stat {
@@ -142,14 +151,20 @@ input {
     height: 50%;
 }
 
+/* .previous-hero-container {
+} */
+
 .previous-hero-list {
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     list-style: none;
-    transform: scale(0.4);
-    margin-top: -4rem;
+    transform: scale(0.7);
+    margin-top: -10rem;
+    background: linear-gradient(darkslategray, firebrick, darkslateblue, crimson);
+    border: 3px solid gray;
+    border-radius: 10%;
 }
 
 .previous-hero-list img { /* Works with class, not ID for some reason */
@@ -158,7 +173,7 @@ input {
 }
 
 .previous-hero-list img:hover { /* Works with class, not ID for some reason */
-    transform: scale(1.1)
+    transform: scale(0.8)
     /* IDK what to put here */
 }
 

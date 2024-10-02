@@ -204,7 +204,7 @@ saveHeroButton.addEventListener('click', async () => {
         previousHeroHeader.style.visibility = `visible`
         let previousHero = document.createElement('li')
         console.log(previousHero)
-        previousHero.innerHTML = `<img src='${imageEl.src}' alt='${imageEl.alt}' class="superhero-image" id='previous-hero'>`
+        previousHero.innerHTML = `<h1>${nameDisplayHero.textContent}</h1><img src='${imageEl.src}' alt='${imageEl.alt}' class="superhero-image" id='previous-hero'>`
         console.log(previousHero.innerHTML)
         previousHeroList.prepend(previousHero) // I asked ChatGPT about Prepend, asked it for "Opposite of appendChild"
                                                // https://chatgpt.com/share/66faf8f9-aaa8-8012-9c3f-e972c4c0ebf8
@@ -451,7 +451,7 @@ function setCardColor(heroAlignment) {
     /* cardBottom.style.backgroundColor = '' */
     /* 'linear-gradient(silver, gray, lightgray, silver)' */
     if (heroAlignment === 'good') {
-        heroCardFull.style.backgroundColor = 'cornflowerblue'
+        heroCardFull.style.background = 'darkslateblue'
         cardTop.style.background = 'navy'
         cardBottom.style.background = 'firebrick'
     } else if (heroAlignment === 'bad') {
