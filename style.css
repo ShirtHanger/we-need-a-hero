@@ -164,15 +164,19 @@ input {
     list-style: none;
     transform: scale(0.7);
     margin-top: -10rem;
-    background: linear-gradient(darkslategray, firebrick, darkslateblue, crimson);
     background: url('./backgrounds/comic-dots-bg-blue.jpg');
-    border: 3px solid gray;
+    
     border-radius: 10%;
 }
 
 .previous-hero-list img { /* Works with class, not ID for some reason */
     transition: transform 0.5s;
     /* IDK what to put here */
+}
+
+.previous-hero-list h1 {
+    border: 1px dashed red;
+    background: crimson;
 }
 
 .previous-hero-list img:hover { /* Works with class, not ID for some reason */
