@@ -79,6 +79,8 @@ const spaceBackground = './backgrounds/star-wars-bg.jpg'
 const sewerBackground = './backgrounds/tmnt-sewer-bg-2.jpg'
 const mangaBackground = './backgrounds/manga-bg.jpg'
 const haloBackground = './backgrounds/halo-bg.png'
+const imageComicsBackground = './backgrounds/orange-bg-2.png'
+const darkHorseBackground = './backgrounds/orange-bg-2.png' /* Replace with this https://www.freepik.com/free-vector/flat-design-orange-comics-background_11740847.htm */
 
 const abcBackground = './backgrounds/abc-studios-bg.jpg'
 const hannaBarberaBackground = './backgrounds/cosmic-bg.jpg' // cartoon cosmic bgs available
@@ -298,10 +300,10 @@ function setAesthetic(heroPublisher, heroAlignment) {
         setBackground(lucasFilmLogo, heroPublisher, spaceBackground)
 
     } else if (heroPublisher === 'Image Comics') {
-        setBackground(imageComicsLogo, heroPublisher, defaultBackground)
+        setBackground(imageComicsLogo, heroPublisher, imageComicsBackground)
 
     } else if (heroPublisher === 'Dark Horse Comics') {
-        setBackground(darkHorseLogo, heroPublisher, defaultBackground)
+        setBackground(darkHorseLogo, heroPublisher, darkHorseBackground)
 
     } else if (heroPublisher === 'IDW Publishing') {
         setBackground(idwLogo, heroPublisher, sewerBackground)

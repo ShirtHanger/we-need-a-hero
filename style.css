@@ -14,12 +14,22 @@ body {
     font-weight: 400;
     font-style: normal;
     text-decoration-color: black;
+    text-decoration: double;
+    text-shadow: 2px 2px 4px black;
 }
 
 
 h3 {
     font-size: 4rem;
-    box-shadow: 10px 10px 10px 10px black;
+    box-shadow: 5px 5px 5px 5px black;
+}
+
+.main-title {
+    border-radius: 100%;
+    background: url('./backgrounds/red-bg.jpg');
+    color: cyan;
+    text-decoration: double;
+    text-shadow: 2px 2px 4px black;
 }
 
 .publisher-header {
@@ -45,11 +55,12 @@ h3 {
 .hero-data {
     font-size: 1rem;
     border-radius: 0%;
-    opacity: 0.9;
     background: darkcyan;
     border: 2px solid magenta;
     box-shadow: 10px 10px 10px 10px black;
     background: url('./backgrounds/blue-bg.jpg');
+    text-decoration: double;
+    text-shadow: 2px 2px 4px black;
 }
 
 #hero-name-display {
@@ -142,26 +153,23 @@ h5 {
 
 .test-buttons {
     background: crimson;
-    background: url('./backgrounds/red-bg.jpg');
+    background: url('./backgrounds/orange-bg.jpg');
     border: 2px solid green;
     border-radius: 10%;
-    opacity: 1.0;
     box-shadow: 10px 10px 10px 10px black;
-}
-
-#publisher-stat {
-    box-shadow: 10px 10px 10px 10px black;
-    border-radius: 30%;
-}
+}   
 
 button, input {
     padding: 2rem;
     margin: 2rem;
+    font-size: 1rem;
     background: blue;
     font-family: "Bangers", sans-serif;
     font-weight: 400;
     font-style: normal;
     border-radius: 35%;
+    text-decoration: double;
+    text-shadow: 2px 2px 4px black;
 }
 
 #random-hero-button {
@@ -175,6 +183,8 @@ input {
 #publisher-stat {
     width: 50%;
     height: 50%;
+    box-shadow: 10px 10px 10px 10px black;
+    border-radius: 20%;
 }
 
 /* .previous-hero-container {
@@ -186,7 +196,7 @@ input {
     flex-direction: row;
     flex-wrap: wrap;
     list-style: none;
-    transform: scale(0.7) translate(0px, -700px);
+    transform: scale(0.7) translate(0px, -500px);
     margin-top: -10rem;
     background: url('./backgrounds/comic-dots-bg-blue.jpg');
     border-radius: 10%;
