@@ -4,7 +4,7 @@ body {
     display: block;
     text-align: center;
     margin: auto;
-    background: url('./backgrounds/mixed-bg.jpg');
+    background: url('./backgrounds/default-bg.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -115,17 +115,25 @@ h5 {
 
 .right-side {
     flex-direction: column;
+    justify-content: center;
+}
+
+.right-side, #toggle-notice { 
+    visibility: hidden;
 }
 
 button, input {
     padding: 2rem;
     margin: 2rem;
     background-color: blue;
-    font-family: "Bangers", system-ui;
+    font-family: "Bangers", sans-serif;
     font-weight: 400;
     font-style: normal;
     border-radius: 35%;
-    text-decoration-color: green;
+}
+
+#random-hero-button {
+    visibility: visible;
 }
 
 input {
@@ -182,8 +190,8 @@ input {
         display: flex;
         justify-content: center;
         flex-direction: column-reverse;
-        padding: 6rem;
-        /* transform: scale(1.0); */
+        padding: 0rem;
+        transform: scale(1.0)
     }
 
     #pic-display {
@@ -193,22 +201,30 @@ input {
     }
 
     .hero-data {
-        font-size: 2rem;
-        margin: auto;
+        font-size: 1.5rem;
         padding: 0rem;
         /* transform: scale(1.0); */
     }
 
     .hero-card-full {
         justify-content: center;
+        font-size: 1rem;
+        transform: scale(0.7)
+    }
+
+    .card-bottom {
         font-size: 2rem;
-        /* transform: scale(1.0); */
     }
 
     .right-side {
         justify-content: center;
         flex-direction: row;
-        /* transform: scale(1.0); */
+        flex-wrap: wrap;
+        transform: scale(0.9)
+    }
+
+    #publisher-stat {
+        transform: scale(1.5)
     }
 
     .previous-hero-list {
@@ -232,6 +248,9 @@ input {
     body {
       visibility: hidden;
     }
+    .right-side, #toggle-notice, .previous-hero-container { /* These elements become visible via DOM events, must specifically hide them */
+        opacity: 0;
+      }
     .hero-card-full {
       visibility: visible;
       position: fixed;

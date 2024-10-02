@@ -7,6 +7,7 @@ const randomHeroButton = document.querySelector('#random-hero-button')
 const toggleStatsButton = document.querySelector('#toggle-stats-button')
 const saveHeroButton = document.querySelector('#save-hero-button')
 const buttonFour = document.querySelector('#btn4')
+
 const userInput = document.querySelector('input')
 
 /* Display elements */
@@ -16,6 +17,7 @@ const nameDisplayCivilian = document.querySelector('#civilian-name-display')
 const heroCardFull = document.querySelector('.hero-card-full')
 const imageEl = document.querySelector('#pic-display')
 const cardBottom = document.querySelector('.card-bottom')
+const toggleNotice = document.querySelector('#toggle-notice')
 
 /* Previous hero display elements */
 
@@ -33,6 +35,8 @@ const publisherStat = document.querySelector('#publisher-stat')
 const alignmentStat = document.querySelector('#alignment-stat')
 
 toggleStatsElements = [toggleStatsButton, cardBottom] /* Used for toggle stats event */
+
+hiddenButtonElements = [toggleStatsButton, saveHeroButton, buttonFour, publisherStat, toggleNotice]
 
 /* Company logos */
 
@@ -85,7 +89,7 @@ const sonyPicturesBackground = './backgrounds/sony-pictures-bg.png'
 const titanBooksBackground = './backgrounds/titan-books-bg.jpg'
 
 /* The default background */
-const mixedBackground = './backgrounds/mixed-bg.jpg'
+const defaultBackground = './backgrounds/default-bg.jpg'
 
 
 searchButton.addEventListener('click', async () => { /* Pulls image and hero stats when search button is clicked */
@@ -127,6 +131,8 @@ searchButton.addEventListener('click', async () => { /* Pulls image and hero sta
     console.log(heroData.biography.publisher)
 
     setAesthetic(heroData.biography.publisher)
+
+    revealButtons(imageEl)
 })
 
 randomHeroButton.addEventListener('click', async (params) => {
@@ -155,6 +161,8 @@ randomHeroButton.addEventListener('click', async (params) => {
     console.log(heroData.biography.publisher)
 
     setAesthetic(heroData.biography.publisher)
+
+    revealButtons(imageEl)
 
 
 })
@@ -187,7 +195,7 @@ for (toggleStatsElement of toggleStatsElements) {
 saveHeroButton.addEventListener('click', async () => {
     /* Adds image of currently displayed hero to the bottom of page */
     /* Plan on creating an extra function to re-pull that same heroes data again when image is clicked */
-    if (imageEl.alt !== '') {
+    if (imageEl.alt !== '') { 
 
         previousHeroHeader.style.visibility = `visible`
         let previousHero = document.createElement('li')
@@ -227,7 +235,11 @@ function setHeroStats(responseDrill, heroPic, heroID) {
 
     /* Top of the card gets their civilian name, left side gets their superhero name */
     nameDisplayHero.textContent = responseDrill.name
-    nameDisplayCivilian.textContent = responseDrill.biography['full-name']
+    if (nameDisplayCivilian.textContent !== '') {
+        nameDisplayCivilian.textContent = responseDrill.biography['full-name']
+    } else {
+        nameDisplayCivilian.textContent = responseDrill.name
+    }
     
     imageEl.setAttribute ('src', heroPic)
     imageEl.setAttribute ('alt', heroID) // Storing ID used for "Toggle stats" button function
@@ -278,16 +290,16 @@ function setAesthetic(heroPublisher) {
         setBackground(lucasFilmLogo, heroPublisher, spaceBackground)
 
     } else if (heroPublisher === 'Image Comics') {
-        setBackground(imageComicsLogo, heroPublisher, mixedBackground)
+        setBackground(imageComicsLogo, heroPublisher, defaultBackground)
 
     } else if (heroPublisher === 'Dark Horse Comics') {
-        setBackground(darkHorseLogo, heroPublisher, mixedBackground)
+        setBackground(darkHorseLogo, heroPublisher, defaultBackground)
 
     } else if (heroPublisher === 'IDW Publishing') {
         setBackground(idwLogo, heroPublisher, sewerBackground)
         
     } else if (heroPublisher === 'HarperCollins') {
-        setBackground(harperCollinsLogo, heroPublisher, mixedBackground)
+        setBackground(harperCollinsLogo, heroPublisher, defaultBackground)
 
     } else if (heroPublisher === 'Microsoft') {
         setBackground(microsoftLogo, heroPublisher, haloBackground)
@@ -296,7 +308,7 @@ function setAesthetic(heroPublisher) {
         setBackground(iconComicsLogo, heroPublisher, redBackground)
 
     } else if (heroPublisher === 'SyFy') {
-        setBackground(syfyLogo, heroPublisher, mixedBackground)
+        setBackground(syfyLogo, heroPublisher, defaultBackground)
 
     } else if (heroPublisher === 'Wildstorm') {
         setBackground(wildstormLogo, heroPublisher, blueBackground)
@@ -339,7 +351,7 @@ function setAesthetic(heroPublisher) {
     /* End */
 
     } else {
-        setBackground('', heroPublisher, mixedBackground)
+        setBackground('', heroPublisher, defaultBackground)
     }
 
     // Fixes repeating background
@@ -358,7 +370,7 @@ function toggleDisplayedStats(responseDrill, heroStatHeader) {
 
         // Set to physical stats
 
-        heroStatHeader.innerHTML = `PHYSICAL STATS`
+        heroStatHeader.innerHTML = `PHYSICAL CHARACTERISTICS`
         
         heroStatItems.innerHTML = 
         `<strong>HEIGHT</strong> - ${responseDrill.appearance.height[0]}</p>
@@ -366,18 +378,18 @@ function toggleDisplayedStats(responseDrill, heroStatHeader) {
         <p><strong>RACE</strong> - ${responseDrill.appearance.race}</p>
         <p><strong>GENDER</strong> - ${responseDrill.appearance.gender}`
 
-    } else if (heroStatHeader.innerHTML === `PHYSICAL STATS`) {
+    } else if (heroStatHeader.innerHTML === `PHYSICAL CHARACTERISTICS`) {
 
         //Set to bio stats
 
-        heroStatHeader.innerHTML = `BIOGRAPHY STATS`
+        heroStatHeader.innerHTML = `BIOGRAPHY`
         
         heroStatItems.innerHTML = `<strong>Civilian Name</strong> - ${responseDrill.biography['full-name']}</p>
         <p><strong>Place of Birth</strong> - ${responseDrill.biography['place-of-birth']}</p>
         <p><strong>Lives in</strong> - ${responseDrill.work.base}</p>
         <p><strong>Occupation</strong> - ${responseDrill.work.occupation}`
 
-    } else if (heroStatHeader.innerHTML === `BIOGRAPHY STATS`) {
+    } else if (heroStatHeader.innerHTML === `BIOGRAPHY`) {
 
         // Set to battle stats
         
@@ -438,5 +450,14 @@ function setCardColor(heroAlignment) {
         
     } else {
         
+    }
+}
+
+function revealButtons(heroImage) {
+    if (heroImage.alt !== '') {
+        for (hiddenButton of hiddenButtonElements) {
+            console.log(hiddenButton)
+            hiddenButton.style.visibility = `visible`
+        }
     }
 }
