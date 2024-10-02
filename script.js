@@ -19,7 +19,7 @@ const cardBottom = document.querySelector('.card-bottom')
 
 /* Previous hero display elements */
 
-previousHeroList = document.querySelector('.previous-hero-list')
+const previousHeroList = document.querySelector('.previous-hero-list')
 const previousHeroContainer = document.querySelector('.previous-hero-container')
 const previousHeroHeader = document.querySelector('h5')
 
@@ -48,6 +48,21 @@ const idwLogo = './publisher-logos/idw-publishing-logo.svg'
 const harperCollinsLogo = './publisher-logos/harpercollins-logo.jpg'
 const microsoftLogo = './publisher-logos/microsoft-logo-2.svg'
 
+const abcStudiosLogo = './publisher-logos/abc-studios-logo.svg'
+const hannaBarberaLogo = './publisher-logos/hanna-barbera-logo.svg' // PNG available
+const nbcLogo = './publisher-logos/nbc-logo.svg'
+const rebellionLogo = './publisher-logos/rebellion-logo.svg'
+const sonyPicturesLogo = './publisher-logos/sony-pictures-logo.svg'
+const southParkLogo = './publisher-logos/south-park-logo.svg'
+const starTrekLogo = './publisher-logos/star-trek-logo.svg'
+const syfyLogo = './publisher-logos/syfy-logo.svg'
+const tolkeinLogo = './publisher-logos/tolkien-logo.svg'
+const universalStudiosLogo = './publisher-logos/universal-studios-logo.svg'
+const iconComicsLogo = './publisher-logos/icon-comics-logo.png'
+const jkRowlingLogo = './publisher-logos/jk-rowling-logo.png'
+const wildstormLogo = './publisher-logos/wildstorm-logo.png'
+const titanBooksLogo = './publisher-logos/titan-books-logo.jpg'
+
 /* Special backgrounds */
 
 const redBackground = './backgrounds/red-bg.jpg'
@@ -56,6 +71,18 @@ const spaceBackground = './backgrounds/star-wars-bg.jpg'
 const sewerBackground = './backgrounds/tmnt-sewer-bg-2.jpg'
 const mangaBackground = './backgrounds/manga-bg.jpg'
 const haloBackground = './backgrounds/halo-bg.png'
+
+const abcBackground = './backgrounds/abc-studios-bg.jpg'
+const hannaBarberaBackground = './backgrounds/cosmic-bg.jpg' // cartoon cosmic bgs available
+const jkRowlingBackground = './backgrounds/jk-rowling-bg.jpg'
+const nbcBackground = './backgrounds/nbc-bg.jpg'
+const rebellionBackground = './backgrounds/rebellion-bg.jpg' // 4 total versions available
+const southParkBackground = './backgrounds/south-park-bg.jpg'
+const starTrekBackground = './backgrounds/star-trek-bg.jpg'
+const tolkeinBackground = './backgrounds/tolkien-bg.jpg'
+const universalStudiosBackground = './backgrounds/universal-studios-bg.jpg'
+const sonyPicturesBackground = './backgrounds/sony-pictures-bg.png'
+const titanBooksBackground = './backgrounds/titan-books-bg.jpg'
 
 /* The default background */
 const mixedBackground = './backgrounds/mixed-bg.jpg'
@@ -264,6 +291,52 @@ function setAesthetic(heroPublisher) {
 
     } else if (heroPublisher === 'Microsoft') {
         setBackground(microsoftLogo, heroPublisher, haloBackground)
+
+    } else if (heroPublisher === 'Icon Comics') {
+        setBackground(iconComicsLogo, heroPublisher, redBackground)
+
+    } else if (heroPublisher === 'SyFy') {
+        setBackground(syfyLogo, heroPublisher, mixedBackground)
+
+    } else if (heroPublisher === 'Wildstorm') {
+        setBackground(wildstormLogo, heroPublisher, blueBackground)
+
+    } else if (heroPublisher === 'Titan Books') {
+        setBackground(titanBooksLogo, heroPublisher, titanBooksBackground)
+
+        /* New stuff */
+
+    } else if (heroPublisher === 'J. R. R. Tolkien') {
+        setBackground(tolkeinLogo, heroPublisher, tolkeinBackground)
+
+    } else if (heroPublisher === 'Hanna-Barbera') {
+        setBackground(hannaBarberaLogo, heroPublisher, hannaBarberaBackground)
+
+    } else if (heroPublisher === 'J. K. Rowling') {
+        setBackground(jkRowlingLogo, heroPublisher, jkRowlingBackground)
+
+    } else if (heroPublisher === 'Star Trek') {
+        setBackground(starTrekLogo, heroPublisher, starTrekBackground)
+
+    } else if (heroPublisher === 'Rebellion') {
+        setBackground(rebellionLogo, heroPublisher, rebellionBackground)
+
+    } else if (heroPublisher === 'South Park') {
+        setBackground(southParkLogo, heroPublisher, southParkBackground)
+
+    } else if (heroPublisher === 'NBC - Heroes') {
+        setBackground(nbcLogo, heroPublisher, nbcBackground)
+
+    } else if (heroPublisher === 'Sony Pictures') {
+        setBackground(sonyPicturesLogo, heroPublisher, sonyPicturesBackground)
+
+    } else if (heroPublisher === 'Universal Studios') {
+        setBackground(universalStudiosLogo, heroPublisher, universalStudiosBackground)
+
+    } else if (heroPublisher === 'ABC Studios') {
+        setBackground(abcStudiosLogo, heroPublisher, abcBackground)
+
+    /* End */
 
     } else {
         setBackground('', heroPublisher, mixedBackground)

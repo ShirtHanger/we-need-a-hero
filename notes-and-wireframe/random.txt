@@ -71,38 +71,59 @@ Shueisha
 George Lucas
 Image Comics
 Dark Horse Comics
-IDW Publishing (TEENAGE MUTANT NINJA TURTLES!)
+IDW Publishing 
 HarperCollins
-Microsoft (Halo)
-
-CODE LATER:
-
-Background + Logo found
-J. R. R. Tolkien (574)
-Hanna-Barbera (91)
-J. K. Rowling (310)
-Star Trek (210)
-Rebellion (373)
-South Park (Captain hindsight)
-
-Just logo found
-Icon Comics (82)
-SyFy (277)
-Titan Books (352)
-
+Microsoft 
+Icon Comics 
+SyFy 
+Wildstorm 
+Titan Books 
+J. R. R. Tolkien 
+Hanna-Barbera 
+J. K. Rowling 
+Star Trek 
+Rebellion 
+South Park 
+NBC - Heroes 
+Sony Pictures 
+Universal Studios 
+ABC Studios 
 ADD LATER:
 
-https://www.superheroapi.com/api.php/749a30707cb8e9fdcef7e93c31353b2b/373
-https://superheroapi.com/ids.html
-373
+749a30707cb8e9fdcef7e93c31353b2b
 
-NBC - Heroes (ID 7)
-Wildstorm (15)
-Archangel (24)
-ABC Studios (200)
-Universal Studios (203)
-Sony Pictures (308)
-Team Epic TV (153)
+https://www.superheroapi.com/api.php/${publicKey}/373
+https://superheroapi.com/ids.html
+
+Does this API have any other publishers? Here's what I already have:
+Marvel Comics
+DC Comics
+Shueisha
+George Lucas
+Image Comics
+Dark Horse Comics
+IDW Publishing 
+HarperCollins
+Microsoft 
+Icon Comics 
+SyFy 
+Wildstorm 
+Titan Books 
+J. R. R. Tolkien 
+Hanna-Barbera 
+J. K. Rowling 
+Star Trek 
+Rebellion 
+South Park 
+NBC - Heroes 
+Sony Pictures 
+Universal Studios 
+ABC Studios 
+
+Give me an ID number AND hero name for each unlisted publisher
+
+
+
 
 
 
