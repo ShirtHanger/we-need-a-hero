@@ -38,7 +38,7 @@ const firstAppearanceStat = document.querySelector('#first-appearance-stat')
 const publisherStat = document.querySelector('#publisher-stat')
 const alignmentStat = document.querySelector('#alignment-stat')
 
-toggleStatsElements = [toggleStatsButton, cardBottom] /* Used for toggle stats event */
+toggleStatsElements = [toggleStatsButton, heroCardFull] /* Used for toggle stats event */
 
 hiddenButtonElements = [toggleStatsButton, saveHeroButton, buttonFour, publisherStat, toggleNotice]
 
@@ -282,6 +282,8 @@ function setAesthetic(heroPublisher, heroAlignment) {
 
     setCardColor(heroAlignment)
 
+    publisherStat.style.visibility = 'visible'
+
     if (heroPublisher === 'Marvel Comics') {
 
         setBackground(marvelLogo, heroPublisher, redBackground)
@@ -322,8 +324,6 @@ function setAesthetic(heroPublisher, heroAlignment) {
     } else if (heroPublisher === 'Titan Books') {
         setBackground(titanBooksLogo, heroPublisher, titanBooksBackground)
 
-        /* New stuff */
-
     } else if (heroPublisher === 'J. R. R. Tolkien') {
         setBackground(tolkeinLogo, heroPublisher, tolkeinBackground)
 
@@ -357,7 +357,8 @@ function setAesthetic(heroPublisher, heroAlignment) {
     /* End */
 
     } else {
-        setBackground('', heroPublisher, defaultBackground)
+        setBackground('', '', defaultBackground)
+        publisherStat.style.visibility = 'hidden'
     }
 
     // Fixes repeating background

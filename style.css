@@ -16,6 +16,16 @@ body {
     text-decoration-color: black;
 }
 
+
+h3 {
+    font-size: 4rem;
+    box-shadow: 10px 10px 10px 10px black;
+}
+
+.publisher-header {
+    box-shadow: 0 0 0 0 black;
+}
+
 .superhero-image { /* Discovered via https://www.shecodes.io/athena/36159-how-to-make-an-image-50-smaller-with-css
     Did not realize this was an AI website, I just google searched "How to make images smaller CSS" */
     transform: scale(0.5);
@@ -27,23 +37,32 @@ body {
     flex-direction: row;
     padding: 0rem; /* Padding of 6rem makes image center well for some reason on desktop, not for mobile */
     margin: 0rem;
-    scale: (0.7);
+    transform: scale(0.7) translate(0px, -100px);
     align-items: flex-start;
 }
 
 
 .hero-data {
     font-size: 1rem;
+    border-radius: 0%;
+    opacity: 0.9;
+    background: darkcyan;
+    border: 2px solid magenta;
+    box-shadow: 10px 10px 10px 10px black;
+    background: url('./backgrounds/blue-bg.jpg');
+}
+
+#hero-name-display {
     background: darkolivegreen;
     border: 2px solid magenta;
-    border-radius: 50%;
-    opacity: 0.9;
+    border-radius: 10%;
 }
+/* background: url('./backgrounds/comic-dots-bg-blue.jpg'); */
 
 #first-appearance-stat {
     background: maroon;
     border: 2px solid darkgoldenrod;
-    border-radius: 50%;
+    border-radius: 30%;
     font-size: 1.5rem;
 }
 
@@ -57,11 +76,12 @@ body {
     background-attachment: fixed;
     background-size: 100% 100%;
     background-position: inherit; */
-    /* transform: scale(0.5); */ /* When enabled, entire hero card shifts downward. Ugly design. Figure out how to fix */
+    transform: scale(0.6) translate(0px, -320px); /* When enabled, entire hero card shifts downward. Ugly design. Figure out how to fix */
     align-self: center;
     /* You can fix it with this and manual adjustment if you are willing */
     /* height: 60%; */
     /* width: 60%; */
+    box-shadow: 10px 10px 10px 10px black;
 }
 
 .card-top {
@@ -70,7 +90,6 @@ body {
     font: bolder;
     border: 3px dashed gray;
     background: purple;
-    transform: scale(1.0);
 }
 
 #pic-display {
@@ -119,15 +138,20 @@ h5 {
 .right-side {
     flex-direction: column;
     justify-content: center;
+}
+
+.test-buttons {
     background: crimson;
-    border: 2px solid purple;
-    border-radius: 50%;
-    opacity: 0.9;
+    background: url('./backgrounds/red-bg.jpg');
+    border: 2px solid green;
+    border-radius: 10%;
+    opacity: 1.0;
+    box-shadow: 10px 10px 10px 10px black;
 }
 
 #publisher-stat {
-    background: darkslategray;
-    border: 2px solid tomato;
+    box-shadow: 10px 10px 10px 10px black;
+    border-radius: 30%;
 }
 
 button, input {
@@ -162,7 +186,7 @@ input {
     flex-direction: row;
     flex-wrap: wrap;
     list-style: none;
-    transform: scale(0.7);
+    transform: scale(0.7) translate(0px, -700px);
     margin-top: -10rem;
     background: url('./backgrounds/comic-dots-bg-blue.jpg');
     
@@ -248,7 +272,7 @@ input {
     .previous-hero-list {
         flex-direction: column;
         flex-wrap: wrap-reverse;
-        transform: scale(0.8);
+        transform: scale(0.7);
     }
 
 
@@ -263,7 +287,7 @@ input {
     /* When the DOM calls the "Print" function, make everything invisible and make the hero card 
     take up entire page. Prints neat card 
     Currently, cuts off at bottom of page */
-    body {
+    html {
       visibility: hidden;
     }
     .right-side, #toggle-notice, .previous-hero-container { /* These elements become visible via DOM events, must specifically hide them */
@@ -272,7 +296,7 @@ input {
     .hero-card-full {
       visibility: visible;
       position: fixed;
-      transform: scale(0.6);
+      transform: scale(0.6) translate(-100px, -100px);
     }
 
     #pic-display {
