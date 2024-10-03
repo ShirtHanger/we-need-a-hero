@@ -22,16 +22,7 @@ Problems with name search
 
     Returns an array of Hero objects.
         Multiple results means multiple heroes in array.
-        Can just return the first hero that fits requirement. Fix this later.
-
-        Possible solutions
-            multiple display
-            If the array's length is more than 1 (Multiple results)
-                For loop to pull civilian name of each hero
-                Ask "Which one?"
-                    When they select, take the civilian name into a variable
-                    Check if the name is equal to the drill location for each array item
-                    Select that hero
+            Decided to pass in random number to return random hero in search results
 
 STATS I WANT (May trim later)
 
@@ -64,7 +55,6 @@ Other stuff:
 
 Publishers (Exact case, string):
 
-ADDED:
 Marvel Comics
 DC Comics
 Shueisha
@@ -90,44 +80,13 @@ Universal Studios
 ABC Studios 
 ADD LATER:
 
-749a30707cb8e9fdcef7e93c31353b2b
+Example link for checking
 
 https://www.superheroapi.com/api.php/${publicKey}/373
 https://superheroapi.com/ids.html
 
-Does this API have any other publishers? Here's what I already have:
-Marvel Comics
-DC Comics
-Shueisha
-George Lucas
-Image Comics
-Dark Horse Comics
-IDW Publishing 
-HarperCollins
-Microsoft 
-Icon Comics 
-SyFy 
-Wildstorm 
-Titan Books 
-J. R. R. Tolkien 
-Hanna-Barbera 
-J. K. Rowling 
-Star Trek 
-Rebellion 
-South Park 
-NBC - Heroes 
-Sony Pictures 
-Universal Studios 
-ABC Studios 
 
-Give me an ID number AND hero name for each unlisted publisher
-
-
-
-
-
-
-731 total heroes in API list
+731 total heroes in API list currently
     "Random hero" button must have a random number between 1 and 731
 
 =============================
@@ -170,9 +129,6 @@ Try using float left/right for styling too
 For updating list of previous heroes, review this exercise from bootcamp prep
 
 https://github.com/eric-klimowich/bootcamp-prep-part-2-2024/blob/main/dom-events/responding-to-events/responding-to-events.md
-
-
-============= Glitches ============
 
 ============= To do list ==============
 

@@ -286,10 +286,12 @@ function setAesthetic(heroPublisher, heroAlignment) {
     setCardColor(heroAlignment)
 
     publisherStat.style.visibility = 'visible'
+
+    /* Sets value of image borders so it doesn't clutter screen before user pulls a card */
     setBoxShadow(heroStatHeader)
     setBoxShadow(publisherStat)
-    imageEl.style.border = '10px ridge green'
 
+    imageEl.style.border = '10px ridge green'
     heroCardFull.style.border = '10px ridge red'
     setBoxShadow(heroCardFull)
     cardTop.style.border = '20px ridge gray'
@@ -460,25 +462,22 @@ function setBackground(companyLogo, heroPublisher, companyBackground) {
 }
 
 function setCardColor(heroAlignment) {
-    /* Changes card colors depending on hero's alignment */
-    /* cardBottom.style.backgroundColor = '' */
-    /* 'linear-gradient(silver, gray, lightgray, silver)' */
+    
     if (heroAlignment === 'good') {
-        heroCardFull.style.background = 'darkslateblue'
-        cardTop.style.background = 'navy'
-        cardBottom.style.background = 'firebrick'
+        setCardColorCode('darkslateblue', 'navy', 'firebrick')
     } else if (heroAlignment === 'bad') {
-        heroCardFull.style.background = 'darkslategrey'
-        cardTop.style.background = 'firebrick'
-        cardBottom.style.background = 'maroon'
+        setCardColorCode('darkslategrey', 'firebrick', 'maroon')
     } else if (heroAlignment === 'neutral') {
-        heroCardFull.style.background = 'darkmagenta'
-        cardTop.style.background = 'darkcyan'
-        cardBottom.style.background = 'darkslategrey'
+        setCardColorCode('darkmagenta', 'darkcyan', 'darkslategrey')
     } else {
-        heroCardFull.style.background = 'orange'
-        cardTop.style.background = 'purple'
-        cardBottom.style.background = 'brown'
+        setCardColorCode('orange', 'purple', 'brown')
+    }
+
+    function setCardColorCode(cardFullColor, cardTopColor, cardBottomColor) {
+        /* Only used here. Sets color of card, repeatable line of code */
+        heroCardFull.style.background = cardFullColor
+        cardTop.style.background = cardTopColor
+        cardBottom.style.background = cardBottomColor
     }
 }
 

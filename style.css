@@ -106,7 +106,7 @@ h5 {
 
 .card-bottom {
     flex-direction: column;
-    font-size: 1rem;
+    font-size: 2rem;
 }
 
 #toggle-notice { 
@@ -145,6 +145,10 @@ button, input {
     border-radius: 35%;
     text-decoration: double;
     text-shadow: 2px 2px 4px firebrick;
+}
+
+input {
+    font-size: 1.4rem;
 }
 
 #random-hero-button {
