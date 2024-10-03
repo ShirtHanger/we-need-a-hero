@@ -2,21 +2,21 @@
 
 Personal HTML project by Jordan Johnson-Carter
 
-<img src="./example-pulls/spider-man-marvel.png">
+<img src="./example-pulls/spider-man-marvel.png" width="50%" height="50%">
 
 This website utilizes Akshay Baweja's [Superhero API](https://superheroapi.com/api/) to pull images and data from over 700 superheroes, supervillains, superpowered- supertenacious, and other enigmas!
 
-<img src="./example-pulls/alex-mercer-prototype.png">
+<img src="./example-pulls/alex-mercer-prototype.png" width="50%" height="50%">
 
 See how they measure up, but if that doesn't interest you, you can swap between their fighting prowess and their physical characteristics and tidbits on their biography.
 
-<img src="./example-pulls/darth-vader-star-wars.png">
+<img src="./example-pulls/darth-vader-star-wars.png" width="50%" height="50%">
 
-<img src="./example-pulls/vegeta-dbz.png">
+<img src="./example-pulls/vegeta-dbz.png" width="50%" height="50%">
 
 Even figurative superheroes (Paul Blart?)
 
-<img src="./example-pulls/paul-blart-mall-cop.png">
+<img src="./example-pulls/paul-blart-mall-cop.png" width="50%" height="50%">
 
 From Marvel and DC, to Dark Horse Comics, NBC heroes, Manga, Star Trek, Star Wars, and many more. They're strong, they're fast, and they're fresh from the fight!
 
