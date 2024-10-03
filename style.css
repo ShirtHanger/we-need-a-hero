@@ -268,10 +268,11 @@ h5 {
     /* When the DOM calls the "Print" function, make everything invisible and make the hero card 
     take up entire page. Prints neat card 
     Currently, cuts off at bottom of page */
-    html {
+    body {
       visibility: hidden;
     }
-    .right-side, #toggle-notice, .previous-hero-container { /* These elements become visible via DOM events, must specifically hide them */
+    /* These elements become visible via DOM events, must specifically hide them */
+    .right-side, #toggle-notice, .previous-hero-container {
         opacity: 0;
       }
     .hero-card-full {

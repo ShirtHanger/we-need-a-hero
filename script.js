@@ -48,7 +48,7 @@ const heroAlignment = document.querySelector('#hero-alignment')
 
 toggleStatsElements = [toggleStatsButton, heroCardFull] /* Used for toggle stats event */
 
-hiddenButtonElements = [toggleStatsButton, saveHeroButton, /* printHeroButton, */ publisherLogo, toggleNotice]
+hiddenButtonElements = [toggleStatsButton, saveHeroButton, printHeroButton, publisherLogo, toggleNotice]
 // Hiding print button because it doesn't currently print a proper image
 
 /* Company logos */
