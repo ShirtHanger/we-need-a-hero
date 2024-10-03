@@ -1,4 +1,10 @@
-const publicKey = '749a30707cb8e9fdcef7e93c31353b2b'
+/* ======================== */
+
+/* GLOBAL VARIABLES */
+
+/* ======================== */
+
+const publicKey = '749a30707cb8e9fdcef7e93c31353b2b' // Allows API calls
 
 /* Button and input elements */
 
@@ -6,7 +12,7 @@ const searchButton = document.querySelector('#search-button')
 const randomHeroButton = document.querySelector('#random-hero-button')
 const toggleStatsButton = document.querySelector('#toggle-stats-button')
 const saveHeroButton = document.querySelector('#save-hero-button')
-const buttonFour = document.querySelector('#btn4')
+const printHeroButton = document.querySelector('#print-hero-button')
 
 const userInput = document.querySelector('input')
 
@@ -15,6 +21,8 @@ const userInput = document.querySelector('input')
 const dataContainer = document.querySelector('.data-container')
 const nameDisplayHero = document.querySelector('#hero-name-display')
 const nameDisplayCivilian = document.querySelector('#civilian-name-display')
+
+// The full hero card  
 
 const heroCardFull = document.querySelector('.hero-card-full')
 const cardTop = document.querySelector('.card-top')
@@ -40,11 +48,10 @@ const alignmentStat = document.querySelector('#alignment-stat')
 
 toggleStatsElements = [toggleStatsButton, heroCardFull] /* Used for toggle stats event */
 
-hiddenButtonElements = [toggleStatsButton, saveHeroButton, buttonFour, publisherStat, toggleNotice]
+hiddenButtonElements = [toggleStatsButton, saveHeroButton, /* printHeroButton, */ publisherStat, toggleNotice]
+// Hiding print button because it doesn't currently print a proper image
 
 /* Company logos */
-
-/* Refactor into an object later */
 
 const marvelLogo = './publisher-logos/Marvel-Logo.svg' // Use of svg rather than png logos prevents logo from taking up entire screen
 const dcLogo = './publisher-logos/dc-logo.svg'
@@ -80,13 +87,13 @@ const sewerBackground = './backgrounds/tmnt-sewer-bg-2.jpg'
 const mangaBackground = './backgrounds/manga-bg.jpg'
 const haloBackground = './backgrounds/halo-bg.png'
 const imageComicsBackground = './backgrounds/orange-bg-2.png'
-const darkHorseBackground = './backgrounds/orange-bg-2.png' /* Replace with this https://www.freepik.com/free-vector/flat-design-orange-comics-background_11740847.htm */
+const darkHorseBackground = './backgrounds/orange-bg-2.png' 
 
 const abcBackground = './backgrounds/abc-studios-bg.jpg'
-const hannaBarberaBackground = './backgrounds/cosmic-bg.jpg' // cartoon cosmic bgs available
+const hannaBarberaBackground = './backgrounds/cosmic-bg.jpg'
 const jkRowlingBackground = './backgrounds/jk-rowling-bg.jpg'
 const nbcBackground = './backgrounds/nbc-bg.jpg'
-const rebellionBackground = './backgrounds/rebellion-bg.jpg' // 4 total versions available
+const rebellionBackground = './backgrounds/rebellion-bg.jpg'
 const southParkBackground = './backgrounds/south-park-bg.jpg'
 const starTrekBackground = './backgrounds/star-trek-bg.jpg'
 const tolkeinBackground = './backgrounds/tolkien-bg.jpg'
@@ -98,37 +105,51 @@ const titanBooksBackground = './backgrounds/titan-books-bg.jpg'
 const defaultBackground = './backgrounds/default-bg.jpg'
 
 
-searchButton.addEventListener('click', async () => { /* Pulls image and hero stats when search button is clicked */
+/* ======================== */
 
-    /* Collects search results for user input */
-    let heroName = userInput.value
+/* EVENT LISTENERS */
+
+/* ======================== */
+
+
+searchButton.addEventListener('click', async () => { 
+    
+    /* Pulls image and hero stats when search button is clicked */
+    let heroName = userInput.value // Collects search results for user input
 
     hyphenJoke(heroName) // See bottom of file
 
     let responseSearch = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/search/${heroName}`)
-    /* response is an object containing an Array of objects 😵‍💫 */
+
+    /* response is an object containing an Array of objects 😵‍💫 (See multi_result_test.js) */
 
     /* Because many heroes share names, a random number is passed into object notation 
     to pull a random search result if there is more than one w/ same name (Spider-men/women, Batmen/women, Supermen/women)*/
 
+    /* Also allows results on incomplete searches. "Spider" or "Bat" or "Super" pulls up so many heroes! */
+
     let randIndex = randNum(responseSearch.data.results.length) // Calls function from below
-    console.log('Array length', responseSearch.data.results.length)
-    console.log('random number:', randIndex)
+
+    /* randIndex is declared ONCE, so the number is the same throughout, meaning same result */
 
     /* Stores drill into variable for readability */
     let heroData = responseSearch.data.results[randIndex]
 
     /* Collects specified ID search for usability */
+
     let heroID = heroData.id
     let responseID = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/${heroID}`)
 
 
 
     let heroPic = heroData.image.url
+    /* Confirmation of data */
     console.log(heroPic)
     console.log(`API Pull: ${heroData.name}`) 
     console.log(`User input: ${heroName}`)
     console.log(`ID: ${heroID}`)
+    console.log('Array length', responseSearch.data.results.length)
+    console.log('random number:', randIndex)
 
     /* Sets stats and data */
 
@@ -136,14 +157,17 @@ searchButton.addEventListener('click', async () => { /* Pulls image and hero sta
 
     console.log(heroData.biography.publisher)
 
+    /* Sets card aesthetic */
     setAesthetic(heroData.biography.publisher, heroData.biography.alignment)
 
+    /* Reveals new buttons if this is the user's first pull */
     revealButtons(imageEl)
 })
 
 randomHeroButton.addEventListener('click', async (params) => {
 
     /* Will create a random ID between 1 and 731, then pull a random hero using ID search */
+
     randomNumber = randNum(732) // 732 because of technicality with math.floor or whatever
 
     let responseID = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/${randomNumber}`)
@@ -156,8 +180,10 @@ randomHeroButton.addEventListener('click', async (params) => {
     let heroID = heroData.id
     let heroPic = heroData.image.url
 
+    /* Confirmation of data */
     console.log(heroData)
-    console.log(heroID)
+    console.log('random number', randomNumber)
+    console.log('Hero ID', heroID)
     console.log(heroPic)
 
     /* Sets stats and data */
@@ -166,7 +192,11 @@ randomHeroButton.addEventListener('click', async (params) => {
 
     console.log(heroData.biography.publisher)
 
+    /* Sets card aesthetic */
+
     setAesthetic(heroData.biography.publisher, heroData.biography.alignment)
+
+    /* Reveals new buttons if this is the user's first pull */
 
     revealButtons(imageEl)
 
@@ -199,35 +229,39 @@ for (toggleStatsElement of toggleStatsElements) {
 }
 
 saveHeroButton.addEventListener('click', async () => {
-    /* Adds image of currently displayed hero to the bottom of page */
-    /* Plan on creating an extra function to re-pull that same heroes data again when image is clicked */
-    if (imageEl.alt !== '') { 
+    /* Adds static image of currently displayed hero to the bottom of page */
+    if (imageEl.alt !== '') {  /* If there is already a hero... */
 
         previousHeroHeader.style.visibility = `visible`
         let previousHero = document.createElement('li')
         console.log(previousHero)
-        previousHero.innerHTML = `<h1>${nameDisplayHero.textContent}</h1><img src='${imageEl.src}' alt='${imageEl.alt}' class="superhero-image" id='previous-hero'>`
+
+        previousHero.innerHTML = 
+        `<h1>${nameDisplayHero.textContent}</h1>
+        <img src='${imageEl.src}' alt='${imageEl.alt}' class="superhero-image" id='previous-hero'>`
+
         console.log(previousHero.innerHTML)
         previousHeroList.prepend(previousHero) // I asked ChatGPT about Prepend, asked it for "Opposite of appendChild"
                                                // https://chatgpt.com/share/66faf8f9-aaa8-8012-9c3f-e972c4c0ebf8
         console.log(previousHeroList)
-        setBoxShadow(previousHeroList)
+        setBoxShadow(previousHeroList) // Sets box-shadow via DOM instead of style, prevents ugly shadow in starting page
     }
     else {
         alert("Error: You don't have a hero here!")
     }
 })
 
-buttonFour.addEventListener('click', async () => {
+/* This button should not be visible at all */
+printHeroButton.addEventListener('click', async () => {
+    /* SHOULD print a cut-out slip of paper with the hero card.
+    Currently broken, splits at bottom. See bottom of style.css */
     if (imageEl.alt !== '') {
         print(heroCardFull)
     } else {
         alert("Error: You don't have a hero here!")
     }
-    // alert('No functions to debug here!')   
 
 })
-
 
 
 
@@ -235,25 +269,27 @@ buttonFour.addEventListener('click', async () => {
 
 /* ======================== */
 
-/* Functions here */
+/* Functions */
+
+/* ======================== */
 
 function setHeroStats(responseDrill, heroPic, heroID) {
+
     /* Sets all text content in accordance to API pull */
 
     /* Top of the card gets their civilian name, left side gets their superhero name */
     nameDisplayHero.textContent = responseDrill.name
     if (nameDisplayCivilian.textContent !== '') {
         nameDisplayCivilian.textContent = responseDrill.biography['full-name']
-    } else {
+    } else { // ... unless the API doesn't have a civilian name
         nameDisplayCivilian.textContent = responseDrill.name
     }
     
     imageEl.setAttribute ('src', heroPic)
     imageEl.setAttribute ('alt', heroID) // Storing ID used for "Toggle stats" button function
-    // will be useful for "Saving previous pulls" stretch goal
     
 
-    /* Sets Power rating stats. Other stats (Biography, physical, etc.) will be toggled via another function */
+    /* Sets Power rating stats. Other stats (Biography, physical, etc.) will be toggled via toggleDisplayedStats function */
 
     heroStatHeader.innerHTML = `BATTLE STATS`
 
@@ -273,7 +309,8 @@ function setHeroStats(responseDrill, heroPic, heroID) {
 
 function randNum(maxNum) {
     /* Returns a random number between 0 and the length of given array */
-    /* Used for when multiple heroes are returned for search result, will use this over ChatGPT's suggestion */
+    /* Used for when multiple heroes are returned for search result*/
+
     randIndex = Math.floor(Math.random() * maxNum) // Copied this from my Pokemon Album Prework, edited for this
     return randIndex
   }
@@ -281,13 +318,13 @@ function randNum(maxNum) {
 function setAesthetic(heroPublisher, heroAlignment) {
 
     /* Sets background of page/card and Logo depending on publisher and hero alignment */
-    /* Planning on setting more aesthetics with this */
 
-    setCardColor(heroAlignment)
+    setCardColor(heroAlignment) // Card color based on if hero, villain, neutral, or other
+
+    /* Sets value of image borders so it doesn't clutter screen before user pulls a card */
 
     publisherStat.style.visibility = 'visible'
 
-    /* Sets value of image borders so it doesn't clutter screen before user pulls a card */
     setBoxShadow(heroStatHeader)
     setBoxShadow(publisherStat)
 
@@ -298,6 +335,7 @@ function setAesthetic(heroPublisher, heroAlignment) {
     heroStatHeader.style.border = '15px ridge darkorange'
     cardBottom.style.border = '10px ridge silver'
 
+    /* Long if else block. Calls setBackground function to create relavent background for heroes based on publisher */
     if (heroPublisher === 'Marvel Comics') {
 
         setBackground(marvelLogo, heroPublisher, redBackground)
@@ -368,14 +406,12 @@ function setAesthetic(heroPublisher, heroAlignment) {
     } else if (heroPublisher === 'ABC Studios') {
         setBackground(abcStudiosLogo, heroPublisher, abcBackground)
 
-    /* End */
-
     } else {
         setBackground('', '', defaultBackground)
         publisherStat.style.visibility = 'hidden'
     }
 
-    // Fixes repeating background
+    // resetting these properties at end fixes repeating background issue
     document.body.style.backgroundRepeat = 'no-repeat'
     document.body.style.backgroundAttachment = 'fixed'
     document.body.style.backgroundSize = 'auto'
@@ -384,12 +420,12 @@ function setAesthetic(heroPublisher, heroAlignment) {
 
 function toggleDisplayedStats(responseDrill, heroStatHeader) {
 
-    /* Swaps which stats are displayed when "Toggle stats" button is clicked */
+    /* Swaps which stats are displayed when "Toggle stats" button or the bottom of card is clicked */
 
 
     if (heroStatHeader.innerHTML === `BATTLE STATS`) {
 
-        // Set to physical stats
+        // Set to physicals
 
         heroStatHeader.innerHTML = `PHYSICAL CHARACTERISTICS`
         
@@ -401,7 +437,7 @@ function toggleDisplayedStats(responseDrill, heroStatHeader) {
 
     } else if (heroStatHeader.innerHTML === `PHYSICAL CHARACTERISTICS`) {
 
-        //Set to bio stats
+        //Set to biography
 
         heroStatHeader.innerHTML = `BIOGRAPHY`
         
@@ -425,43 +461,20 @@ function toggleDisplayedStats(responseDrill, heroStatHeader) {
 
     } else {
 
-        console.log('IDK')
         alert(`Error: You don't have any heroes yet!`)
     }
 }
 
-function hyphenJoke(input) { 
-    /* If the user (Foolishly) forgets to hyphenate Spider-Man's name, tell them as such */
-    /* AND if they (Foolishly) hyphenate Batman's name... */
-    const spiderNames = [
-        'spiderman', 'spider man',
-        'spiderwoman', 'spider woman',
-        'spidergwen', 'spider gwen',
-        'spidergirl', 'spider girl',
-        'spidercarnage', 'spider carnage',        
-    ]
-    for (spiderName of spiderNames) {
-        if (input.toLowerCase() === spiderName) {
-            alert('🕸️You forgot the hyphen🕸️')
-            break
-        }
-    }
-    const batHyphens = ['bat-man', 'bat-girl', 'bat-woman']
-    for (batName of batHyphens) {
-        if (input.toLowerCase() === batName) {
-            alert('🦇Why the hyphen?🦇')
-            break
-        }
-    }
-}
-
 function setBackground(companyLogo, heroPublisher, companyBackground) {
+    /* Repeatable lines of code, sets background and logo associated with hero pulled */
         publisherStat.setAttribute ('src', companyLogo)
         publisherStat.setAttribute ('alt', heroPublisher)
         document.body.style.background = `url(${companyBackground})`
 }
 
 function setCardColor(heroAlignment) {
+
+    /* Sets color of card based on if character is a hero, villain, neutral, or other */
     
     if (heroAlignment === 'good') {
         setCardColorCode('darkslateblue', 'navy', 'firebrick')
@@ -491,5 +504,31 @@ function revealButtons(heroImage) {
 }
 
 function setBoxShadow(element) {
+    /* Sets box shadow via DOM instead of style.css to prevent ugly shadows on start page */
     element.style.boxShadow = '10px 10px 10px 10px black'
+}
+
+function hyphenJoke(input) { 
+    /* If the user (Foolishly) forgets to hyphenate Spider-Man's name, tell them as such */
+    /* AND if they (Foolishly) hyphenate Batman's name... */
+    const spiderNames = [
+        'spiderman', 'spider man',
+        'spiderwoman', 'spider woman',
+        'spidergwen', 'spider gwen',
+        'spidergirl', 'spider girl',
+        'spidercarnage', 'spider carnage',        
+    ]
+    for (spiderName of spiderNames) {
+        if (input.toLowerCase() === spiderName) {
+            alert('🕸️You forgot the hyphen🕸️')
+            break
+        }
+    }
+    const batHyphens = ['bat-man', 'bat-girl', 'bat-woman']
+    for (batName of batHyphens) {
+        if (input.toLowerCase() === batName) {
+            alert('🦇Why the hyphen?🦇')
+            break
+        }
+    }
 }

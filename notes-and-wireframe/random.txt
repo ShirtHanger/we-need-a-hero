@@ -147,4 +147,4 @@ To consolidate changing background,
         
     for the ones that dont have special background
 
-    OR consolidate everything into an object
+    OR refactor all logos and backgrounds into an object
