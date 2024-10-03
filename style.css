@@ -55,7 +55,7 @@ img {
 }
 
 
-.hero-data {
+.hero-history {
     font-size: 1rem;
     border-radius: 10%;
     border: 10px groove firebrick;
@@ -71,7 +71,7 @@ img {
     border-radius: 10%;
 }
 
-#first-appearance-stat {
+#first-appearance {
     background: maroon;
     border: 5px groove goldenrod;
     border-radius: 30%;
@@ -90,13 +90,13 @@ img {
     font: bolder;
 }
 
-#pic-display {
+#card-picture {
     object-fit: contain; /* https://www.w3schools.com/css/css3_object-fit.asp Knowledge get */
     background: navy;
     transform: scale(0.7);
 }
 
-#pic-display:hover {
+#card-picture:hover {
     transform: scale(1.0);
 }
 
@@ -106,7 +106,7 @@ h5 {
 
 .card-bottom {
     flex-direction: column;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 #toggle-notice { 
@@ -123,14 +123,14 @@ h5 {
     justify-content: center;
 }
 
-.test-buttons {
+.button-list {
     background: url('./backgrounds/orange-bg.jpg');
     border: 8px ridge darkblue;
     border-radius: 10%;
     box-shadow: 10px 10px 10px 10px black;
 }   
 
-.test-buttons button {
+.button-list button {
     visibility: hidden;
 } 
 
@@ -160,13 +160,13 @@ input {
     text-shadow: 2px 2px 2px black;
 }
 
-#publisher-stat {
+#publisher-logo {
     width: 50%;
     height: 50%;
     border-radius: 20%;
 }
 
-#publisher-stat:hover {
+#publisher-logo:hover {
     transform: scale(1.2);
 }
 
@@ -217,7 +217,7 @@ h5 {
         transform: scale(1.0)
     }
 
-    #pic-display {
+    #card-picture {
         justify-content: space-evenly;
         transform: scale(1.0);
     }
@@ -226,7 +226,7 @@ h5 {
         font-size: 2rem;
     }
 
-    .hero-data {
+    .hero-history {
         font-size: 1.5rem;
         margin: auto;
     }
@@ -248,7 +248,7 @@ h5 {
         transform: scale(0.9)
     }
 
-    #publisher-stat {
+    #publisher-logo {
         transform: scale(0.9)
     }
 
@@ -280,7 +280,7 @@ h5 {
       transform: scale(0.6) translate(-100px, -100px);
     }
 
-    #pic-display {
+    #card-picture {
         transform: scale(1.0);
     }
   }

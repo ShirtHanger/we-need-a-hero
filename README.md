@@ -1,27 +1,47 @@
 # We Need a Hero!
 
-Personal HTML project. 
+Personal HTML project by Jordan Johnson-Carter
 
-My project will allow users to input the name of over 700 characters across Marvel, DC, and even some manga using a fanmade Superhero API
-They will be displayed on a trading card-style format, showing off an image, their name, stats, and other tidbits
+<img src="./example-pulls/spider-man-marvel.png">
 
-In addition to that, I plan on adding an updating list of previous pulls at the bottom of the page, clicking them will bring up the same character again
+This website utilizes Akshay Baweja's [Superhero API](https://superheroapi.com/api/) to pull images and data from over 700 superheroes, supervillains, superpowered- supertenacious, and other enigmas!
 
-## Ideal desktop design
+<img src="./example-pulls/alex-mercer-prototype.png">
 
-<img src="./notes-and-wireframe/We-Need-A-Hero!-draft-desktop.png">
+See how they measure up, but if that doesn't interest you, you can swap between their fighting prowess and their physical characteristics and tidbits on their biography.
 
-## Ideal mobile design
+<img src="./example-pulls/darth-vader-star-wars.png">
 
-<img src="./notes-and-wireframe/We-Need-A-Hero!-draft-mobile.png">
+<img src="./example-pulls/vegeta-dbz.png">
 
-### Stretch goals:
+Even figurative superheroes (Paul Blart?)
 
-* Background changes based on character alignment, publisher,
-* "Surprise me!" button, using a random number generator function and API ID search
-* Button to toggle stats at bottom of card
+<img src="./example-pulls/paul-blart-mall-cop.png">
 
-### Credits
+From Marvel and DC, to Dark Horse Comics, NBC heroes, Manga, Star Trek, Star Wars, and many more. They're strong, they're fast, and they're fresh from the fight!
 
-* Superhero API - https://superheroapi.com/api/
-* Placeholder art - Dan Hipp
+## Credits
+
+[Superhero API](https://superheroapi.com/api/) - Akshay Baweja - [Website](https://akshaybaweja.com/) - [linkedin](https://www.linkedin.com/in/akshaybaweja/)
+* Wireframe placeholder art - Dan Hipp - [Instagram](https://www.instagram.com/danhipp/)
+
+### Background attribution
+#### [Freepik](https://www.freepik.com/author/freepik)
+* Red Background 
+* Cosmic Background 
+* Manga Background 
+
+#### alicia-mb - [Freepik](https://www.freepik.com/author/alicia-mb)
+* Comic dots 
+* Comic dots blue 
+
+#### pikisuperstar - [Freepik](https://www.freepik.com/author/pikisuperstar)
+* Mixed (Default) background
+#### dgim-studio - [Freepik](https://www.freepik.com/author/dgim-studio)
+* blue Background
+#### Starline - [Freepik](https://www.freepik.com/author/starline)
+* Orange Background #1 
+#### [Pngtree](https://pngtree.com)
+* [Orange Background #2](https://pngtree.com/freebackground/pop-style-halftone-background_1442148.html)
+
+This can all be found in the "background-attributions" text files

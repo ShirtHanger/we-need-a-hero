@@ -26,7 +26,7 @@ const nameDisplayCivilian = document.querySelector('#civilian-name-display')
 
 const heroCardFull = document.querySelector('.hero-card-full')
 const cardTop = document.querySelector('.card-top')
-const imageEl = document.querySelector('#pic-display')
+const cardImageElement = document.querySelector('#card-picture')
 const cardBottom = document.querySelector('.card-bottom')
 
 const toggleNotice = document.querySelector('#toggle-notice')
@@ -42,13 +42,13 @@ const previousHeroHeader = document.querySelector('h5')
 const heroStatHeader = document.querySelector('.hero-stat-header')
 const heroStatItems = document.querySelector('#hero-stat-items')
 
-const firstAppearanceStat = document.querySelector('#first-appearance-stat')
-const publisherStat = document.querySelector('#publisher-stat')
-const alignmentStat = document.querySelector('#alignment-stat')
+const firstAppearanceElement = document.querySelector('#first-appearance')
+const publisherLogo = document.querySelector('#publisher-logo')
+const heroAlignment = document.querySelector('#hero-alignment')
 
 toggleStatsElements = [toggleStatsButton, heroCardFull] /* Used for toggle stats event */
 
-hiddenButtonElements = [toggleStatsButton, saveHeroButton, /* printHeroButton, */ publisherStat, toggleNotice]
+hiddenButtonElements = [toggleStatsButton, saveHeroButton, /* printHeroButton, */ publisherLogo, toggleNotice]
 // Hiding print button because it doesn't currently print a proper image
 
 /* Company logos */
@@ -161,7 +161,7 @@ searchButton.addEventListener('click', async () => {
     setAesthetic(heroData.biography.publisher, heroData.biography.alignment)
 
     /* Reveals new buttons if this is the user's first pull */
-    revealButtons(imageEl)
+    revealButtons(cardImageElement)
 })
 
 randomHeroButton.addEventListener('click', async (params) => {
@@ -198,7 +198,7 @@ randomHeroButton.addEventListener('click', async (params) => {
 
     /* Reveals new buttons if this is the user's first pull */
 
-    revealButtons(imageEl)
+    revealButtons(cardImageElement)
 
 
 })
@@ -209,7 +209,7 @@ for (toggleStatsElement of toggleStatsElements) {
     toggleStatsElement.addEventListener('click', async () => {
 
         /* Pulls hero ID from alt to make things easier */
-        let heroID = imageEl.alt
+        let heroID = cardImageElement.alt
         console.log (heroID)
 
         /* Collects API response again */
@@ -230,7 +230,7 @@ for (toggleStatsElement of toggleStatsElements) {
 
 saveHeroButton.addEventListener('click', async () => {
     /* Adds static image of currently displayed hero to the bottom of page */
-    if (imageEl.alt !== '') {  /* If there is already a hero... */
+    if (cardImageElement.alt !== '') {  /* If there is already a hero... */
 
         previousHeroHeader.style.visibility = `visible`
         let previousHero = document.createElement('li')
@@ -238,7 +238,7 @@ saveHeroButton.addEventListener('click', async () => {
 
         previousHero.innerHTML = 
         `<h1>${nameDisplayHero.textContent}</h1>
-        <img src='${imageEl.src}' alt='${imageEl.alt}' class="superhero-image" id='previous-hero'>`
+        <img src='${cardImageElement.src}' alt='${cardImageElement.alt}' class="superhero-image" id='previous-hero'>`
 
         console.log(previousHero.innerHTML)
         previousHeroList.prepend(previousHero) // I asked ChatGPT about Prepend, asked it for "Opposite of appendChild"
@@ -255,7 +255,7 @@ saveHeroButton.addEventListener('click', async () => {
 printHeroButton.addEventListener('click', async () => {
     /* SHOULD print a cut-out slip of paper with the hero card.
     Currently broken, splits at bottom. See bottom of style.css */
-    if (imageEl.alt !== '') {
+    if (cardImageElement.alt !== '') {
         print(heroCardFull)
     } else {
         alert("Error: You don't have a hero here!")
@@ -285,8 +285,8 @@ function setHeroStats(responseDrill, heroPic, heroID) {
         nameDisplayCivilian.textContent = responseDrill.name
     }
     
-    imageEl.setAttribute ('src', heroPic)
-    imageEl.setAttribute ('alt', heroID) // Storing ID used for "Toggle stats" button function
+    cardImageElement.setAttribute ('src', heroPic)
+    cardImageElement.setAttribute ('alt', heroID) // Storing ID used for "Toggle stats" button function
     
 
     /* Sets Power rating stats. Other stats (Biography, physical, etc.) will be toggled via toggleDisplayedStats function */
@@ -303,8 +303,8 @@ function setHeroStats(responseDrill, heroPic, heroID) {
 
     /* =============== Meta stuff, hero's alignment and first appearance =============== */
 
-    firstAppearanceStat.textContent = responseDrill.biography['first-appearance']
-    alignmentStat.textContent = responseDrill.biography.alignment
+    firstAppearanceElement.textContent = responseDrill.biography['first-appearance']
+    heroAlignment.textContent = responseDrill.biography.alignment
 }
 
 function randNum(maxNum) {
@@ -323,12 +323,12 @@ function setAesthetic(heroPublisher, heroAlignment) {
 
     /* Sets value of image borders so it doesn't clutter screen before user pulls a card */
 
-    publisherStat.style.visibility = 'visible'
+    publisherLogo.style.visibility = 'visible'
 
     setBoxShadow(heroStatHeader)
-    setBoxShadow(publisherStat)
+    setBoxShadow(publisherLogo)
 
-    imageEl.style.border = '10px ridge green'
+    cardImageElement.style.border = '10px ridge green'
     heroCardFull.style.border = '10px ridge red'
     setBoxShadow(heroCardFull)
     cardTop.style.border = '20px ridge gray'
@@ -408,7 +408,7 @@ function setAesthetic(heroPublisher, heroAlignment) {
 
     } else {
         setBackground('', '', defaultBackground)
-        publisherStat.style.visibility = 'hidden'
+        publisherLogo.style.visibility = 'hidden'
     }
 
     // resetting these properties at end fixes repeating background issue
@@ -467,8 +467,8 @@ function toggleDisplayedStats(responseDrill, heroStatHeader) {
 
 function setBackground(companyLogo, heroPublisher, companyBackground) {
     /* Repeatable lines of code, sets background and logo associated with hero pulled */
-        publisherStat.setAttribute ('src', companyLogo)
-        publisherStat.setAttribute ('alt', heroPublisher)
+        publisherLogo.setAttribute ('src', companyLogo)
+        publisherLogo.setAttribute ('alt', heroPublisher)
         document.body.style.background = `url(${companyBackground})`
 }
 
