@@ -144,7 +144,6 @@ searchButton.addEventListener('click', async () => {
 
     let heroPic = heroData.image.url
     /* Confirmation of data */
-    console.log(heroPic)
     console.log(`API Pull: ${heroData.name}`) 
     console.log(`User input: ${heroName}`)
     console.log(`ID: ${heroID}`)
@@ -210,7 +209,6 @@ for (toggleStatsElement of toggleStatsElements) {
 
         /* Pulls hero ID from alt to make things easier */
         let heroID = cardImageElement.alt
-        console.log (heroID)
 
         /* Collects API response again */
 
@@ -219,7 +217,6 @@ for (toggleStatsElement of toggleStatsElements) {
         console.log(`Swapping stats of: ${responseID.data.name}`)
 
         let heroData = responseID.data
-        console.log(heroData)
 
         /* Calls toggle stat function */
 
@@ -234,16 +231,13 @@ saveHeroButton.addEventListener('click', async () => {
 
         previousHeroHeader.style.visibility = `visible`
         let previousHero = document.createElement('li')
-        console.log(previousHero)
 
         previousHero.innerHTML = 
         `<h1>${nameDisplayHero.textContent}</h1>
         <img src='${cardImageElement.src}' alt='${cardImageElement.alt}' class="superhero-image" id='previous-hero'>`
 
-        console.log(previousHero.innerHTML)
         previousHeroList.prepend(previousHero) // I asked ChatGPT about Prepend, asked it for "Opposite of appendChild"
                                                // https://chatgpt.com/share/66faf8f9-aaa8-8012-9c3f-e972c4c0ebf8
-        console.log(previousHeroList)
         setBoxShadow(previousHeroList) // Sets box-shadow via DOM instead of style, prevents ugly shadow in starting page
     }
     else {
@@ -497,7 +491,7 @@ function setCardColor(heroAlignment) {
 function revealButtons(heroImage) {
     if (heroImage.alt !== '') {
         for (hiddenButton of hiddenButtonElements) {
-            console.log(hiddenButton)
+            
             hiddenButton.style.visibility = `visible`
         }
     }
