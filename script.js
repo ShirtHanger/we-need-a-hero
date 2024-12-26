@@ -4,7 +4,9 @@
 
 /* ======================== */
 
-const publicKey = '749a30707cb8e9fdcef7e93c31353b2b' // Allows API calls
+const hiddenKey = `NzQ5YTMwNzA3Y2I4ZTlmZGNlZjdlOTNjMzEzNTNiMmI=`
+
+const publicKey = atob(hiddenKey) // Allows API calls
 
 /* Button and input elements */
 
@@ -150,20 +152,21 @@ searchButton.addEventListener('click', async () => {
     console.log('Array length', responseSearch.data.results.length)
     console.log('random number:', randIndex)
 
-    /* Sets stats and data */
+    /* Creates the hero card */
+    createHeroCard(heroData, heroPic, heroID, heroData.biography.publisher, heroData.biography.alignment, cardImageElement)
 
-    setHeroStats(heroData, heroPic, heroID)
+    // setHeroStats(heroData, heroPic, heroID)
 
-    console.log(heroData.biography.publisher)
+    // console.log(heroData.biography.publisher)
 
-    /* Sets card aesthetic */
-    setAesthetic(heroData.biography.publisher, heroData.biography.alignment)
+    // /* Sets card aesthetic */
+    // setAesthetic(heroData.biography.publisher, heroData.biography.alignment)
 
-    /* Reveals new buttons if this is the user's first pull */
-    revealButtons(cardImageElement)
+    // /* Reveals new buttons if this is the user's first pull */
+    // revealButtons(cardImageElement)
 })
 
-randomHeroButton.addEventListener('click', async (params) => {
+randomHeroButton.addEventListener('click', async () => {
 
     /* Will create a random ID between 1 and 731, then pull a random hero using ID search */
 
@@ -185,19 +188,8 @@ randomHeroButton.addEventListener('click', async (params) => {
     console.log('Hero ID', heroID)
     console.log(heroPic)
 
-    /* Sets stats and data */
-
-    setHeroStats(heroData, heroPic, heroID)
-
-    console.log(heroData.biography.publisher)
-
-    /* Sets card aesthetic */
-
-    setAesthetic(heroData.biography.publisher, heroData.biography.alignment)
-
-    /* Reveals new buttons if this is the user's first pull */
-
-    revealButtons(cardImageElement)
+    /* Creates the hero card */
+    createHeroCard(heroData, heroPic, heroID, heroData.biography.publisher, heroData.biography.alignment, cardImageElement)
 
 
 })
@@ -236,13 +228,41 @@ saveHeroButton.addEventListener('click', async () => {
         `<h1>${nameDisplayHero.textContent}</h1>
         <img src='${cardImageElement.src}' alt='${cardImageElement.alt}' class="superhero-image" id='previous-hero'>`
 
-        previousHeroList.prepend(previousHero) // I asked ChatGPT about Prepend, asked it for "Opposite of appendChild"
-                                               // https://chatgpt.com/share/66faf8f9-aaa8-8012-9c3f-e972c4c0ebf8
+        previousHeroList.prepend(previousHero) 
+
         setBoxShadow(previousHeroList) // Sets box-shadow via DOM instead of style, prevents ugly shadow in starting page
     }
     else {
         alert("Error: You don't have a hero here!")
     }
+
+    const previousHeroItem = document.querySelector('#previous-hero')
+
+    // Finally figured out how to create event listener for dynamically generated stuff!
+    previousHeroItem.addEventListener('click', async () => {
+        console.log('You clicked on a previous hero!')
+        console.log(`Hero ID: ${previousHeroItem.alt}`)
+
+        let responseID = await axios.get(`https://www.superheroapi.com/api.php/${publicKey}/${previousHeroItem.alt}`)
+
+        console.log(`You got: ${responseID.data.name}`)
+
+        console.log('Hero ID:', randomNumber)
+
+        let heroData = responseID.data
+        let heroID = heroData.id
+        let heroPic = heroData.image.url
+
+        /* Confirmation of data */
+        console.log(heroData)
+        console.log('random number', randomNumber)
+        console.log('Hero ID', heroID)
+        console.log(heroPic)
+
+        /* Creates the hero card */
+        createHeroCard(heroData, heroPic, heroID, heroData.biography.publisher, heroData.biography.alignment, cardImageElement)
+        
+    })
 })
 
 /* This button should not be visible at all */
@@ -266,6 +286,25 @@ printHeroButton.addEventListener('click', async () => {
 /* Functions */
 
 /* ======================== */
+
+/* Creates the hero card for hero when searched/randomized/pulled from favorites list */
+
+function createHeroCard(heroData, heroPic, heroID, heroPublisher, heroAlignment, cardImageElement) {
+        
+
+        setHeroStats(heroData, heroPic, heroID)
+
+        console.log(heroPublisher)
+    
+        /* Sets card aesthetic */
+    
+        setAesthetic(heroPublisher, heroAlignment)
+    
+        /* Reveals new buttons if this is the user's first pull */
+    
+        revealButtons(cardImageElement)
+}
+
 
 function setHeroStats(responseDrill, heroPic, heroID) {
 
