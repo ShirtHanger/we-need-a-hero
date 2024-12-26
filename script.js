@@ -226,6 +226,7 @@ saveHeroButton.addEventListener('click', async () => {
 
         previousHero.innerHTML = 
         `<h1>${nameDisplayHero.textContent}</h1>
+        <p>Click to view card again!</p>
         <img src='${cardImageElement.src}' alt='${cardImageElement.alt}' class="superhero-image" id='previous-hero'>`
 
         previousHeroList.prepend(previousHero) 
@@ -261,7 +262,7 @@ saveHeroButton.addEventListener('click', async () => {
 
         /* Creates the hero card */
         createHeroCard(heroData, heroPic, heroID, heroData.biography.publisher, heroData.biography.alignment, cardImageElement)
-        
+
     })
 })
 
