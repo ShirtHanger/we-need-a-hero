@@ -18,6 +18,15 @@ body {
     text-shadow: 2px 2px 4px black;
 }
 
+a {
+    text-decoration: none;
+    color: firebrick;  
+    transform: scale(0.7);
+}
+
+a:hover {
+    transform: scale(1.0);
+}
 
 h3 {
     font-size: 4rem;
@@ -37,7 +46,8 @@ h3 {
 }
 
 img {
-    scale: (0.8);
+    /* scale: (0.8); */
+    transform: scale(0.8);
     transition: transform 0.5s;
 }
 
@@ -134,7 +144,7 @@ h5 {
     visibility: hidden;
 } 
 
-button, input {
+button, input, a {
     padding: 2rem;
     margin: 2rem;
     font-size: 1rem;
