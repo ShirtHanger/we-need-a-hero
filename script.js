@@ -4,7 +4,7 @@
 
 /* ======================== */
 
-const hiddenKey = `749a30707cb8e9fdcef7e93c31353b2b`
+const hiddenKey = `NzQ5YTMwNzA3Y2I4ZTlmZGNlZjdlOTNjMzEzNTNiMmI=`
 
 const publicKey = atob(hiddenKey) // Allows API calls
 
